@@ -1,0 +1,1886 @@
+/**
+Theme Name: Astra Child
+Author: Sharif Uddin
+Author URI: mailto:sharifwds@gmail.com
+Description: Astra is the fastest, fully customizable & beautiful theme suitable for blogs, personal portfolios and business websites. It is very lightweight (less than 50KB on frontend) and offers unparalleled speed. Built with SEO in mind, Astra comes with schema.org code integrated so search engines will love your site. Astra offers plenty of sidebar options and widget areas giving you a full control for customizations. Furthermore, we have included special features and templates so feel free to choose any of your favorite page builder plugin to create pages flexibly. Some of the other features: # WooCommerce Ready # Responsive # Compatible with major plugins # Translation Ready # Extendible with premium addons # Regularly updated # Designed, Developed, Maintained & Supported by Brainstorm Force. Looking for a perfect base theme? Look no further. Astra is fast, fully customizable and beautiful theme!
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: astra-child
+Template: astra
+*/
+
+
+
+/* Global Styles */
+
+*:hover,
+*:focus,
+*:focus-visible{
+	outline:0 !important;
+}
+h1.page-title,
+header.entry-header .entry-title,
+header.entry-header h1.entry-title,
+header.entry-header h2.entry-title{
+	font-size: 36px;
+	text-transform:uppercase;
+	font-weight:bold;
+}
+header.entry-header .entry-title,
+header.entry-header h1.entry-title{
+	text-align:center !important;
+}
+
+.ast-plain-container.ast-no-sidebar #primary {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+button, .button{
+	text-transform:capitalize;
+	font-weight: bold;
+}
+
+.search .ast-container {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+ }
+
+ .ast-container .content-area .ast-row {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* ======================================================================
+   GPH – HEADER / MENU RESPONSIVE RULES (ASTRA + MEGA MENU)
+   - Mobile: <= 921px
+   - Desktop base: >= 922px
+   - Desktop medium: 922px–1200px (logo on top, menus below)
+   - Desktop large: 1201px–1400px
+   ====================================================================== */
+
+
+/* ======================================================================
+   1) MOBILE: <= 921px
+   - Hide desktop menus
+   - Force mobile header
+   - Mobile menu colors + hover states
+   - Remove focus outlines / borders for toggle buttons
+   ====================================================================== */
+@media (max-width: 921px) {
+
+  /* Hide desktop menu elements */
+  .ast-builder-menu-1,
+  .ast-builder-menu-2 {
+    display: none !important;
+  }
+
+  /* Force mobile header visible */
+  .ast-mobile-header-wrap {
+    display: flex !important;
+  }
+
+  /* Hide desktop header wrapper */
+  #ast-desktop-header {
+    display: none;
+  }
+
+  /* Ensure mobile header takes full width */
+  #ast-mobile-header .ast-main-header-wrap.main-header-bar-wrap {
+    width: 100%;
+  }
+
+  /* Mobile header padding */
+  .ast-mobile-header-wrap .ast-primary-header-bar {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* Mobile menu backgrounds + typography + transitions */
+  .ast-builder-menu-mobile .main-navigation .main-header-menu,
+  .ast-builder-menu-mobile .main-navigation .main-header-menu .menu-link,
+  .ast-builder-menu-mobile .main-navigation .main-header-menu .sub-menu {
+    background-color: #fff !important;
+    font-weight: 700 !important;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+
+  /* Mobile menu hover / active background */
+  .ast-builder-menu-mobile .main-navigation .menu-item.current-menu-item > .menu-link,
+  .ast-builder-menu-mobile .main-navigation .main-header-menu:hover,
+  .ast-builder-menu-mobile .main-navigation .main-header-menu .menu-link:hover,
+  .ast-builder-menu-mobile .main-navigation .main-header-menu .sub-menu:hover {
+    background-color: rgba(0, 0, 0, 0.015) !important;
+  }
+
+  /* Remove borders / outlines from mobile toggles */
+  .ast-menu-toggle,
+  .ast-builder-menu-mobile .main-navigation .menu-item.current-menu-item .ast-menu-toggle,
+  .ast-mobile-popup-drawer.active .menu-toggle-close,
+  .ast-button-wrap .ast-mobile-menu-trigger-minimal,
+  .ast-menu-toggle:focus,
+  .ast-mobile-popup-drawer.active .menu-toggle-close:focus,
+  .ast-button-wrap .ast-mobile-menu-trigger-minimal:focus {
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none;
+    background-color: transparent !important;
+  }
+}
+
+
+/* ======================================================================
+   2) DESKTOP BASE: >= 922px
+   - Split mega menu items between left/right sections
+   - Submenu top positioning
+   - Hide mobile header wrapper
+   ====================================================================== */
+@media (min-width: 922px) {
+
+  /* Hide right-group items from LEFT area */
+  .site-header-primary-section-left
+  #mega-menu-wrap-v2-primary-menu
+  #mega-menu-v2-primary-menu > li.gph-menu-items-right {
+    display: none;
+  }
+
+  /* Hide left-group items from RIGHT area */
+  .site-header-primary-section-right
+  #mega-menu-wrap-v2-primary-menu
+  #mega-menu-v2-primary-menu > li.gph-menu-items-left {
+    display: none;
+  }
+	
+  li.gph-menu-items_mobile-only{
+		display:none !important;
+		margin-top:20px;
+	}
+
+  /* Default submenu offset */
+  #mega-menu-wrap-v2-primary-menu #mega-menu-v2-primary-menu ul.mega-sub-menu {
+    top: 74px;
+  }
+
+  /* Center mega menu link text vertically */
+  #mega-menu-wrap-v2-primary-menu #mega-menu-v2-primary-menu > li.mega-menu-item > a.mega-menu-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Hide mobile header wrapper on desktop */
+  #ast-mobile-header .ast-main-header-wrap.main-header-bar-wrap {
+    display: none !important;
+  }
+}
+
+
+/* ======================================================================
+   3) DESKTOP MEDIUM: 922px–1200px
+   - Fix layout break: logo on top, menus below
+   - Mega menu dropdown positioning adjustments for this width
+   ====================================================================== */
+@media (min-width: 922px) and (max-width: 1200px) {
+
+  /* Make header row wrap so logo can occupy full row */
+  #ast-desktop-header .site-primary-header-wrap .ast-builder-grid-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Ensure header sections can grow naturally */
+  #ast-desktop-header .site-primary-header-wrap .site-header-section {
+    height: auto;
+  }
+
+  /* Move center (logo) to top row */
+  #ast-desktop-header .site-primary-header-wrap .ast-grid-section-center {
+    width: 100%;
+    order: -1;
+    justify-content: center;
+    height: auto;
+  }
+
+  /* Remove extra padding around site identity for tight layout */
+  #ast-desktop-header .site-primary-header-wrap .ast-grid-section-center .ast-site-identity {
+    padding: 0;
+  }
+
+  /* Logo size for medium desktops */
+  .site-branding .site-logo-img img {
+    max-width: 420px;
+  }
+
+  /* Mega menu mega panel width */
+  #mega-menu-wrap-v2-primary-menu #mega-menu-v2-primary-menu > li.mega-menu-megamenu > ul.mega-sub-menu {
+    width: 900px;
+  }
+
+  /* Mega submenu position tweak (medium range) */
+  #mega-menu-wrap-v2-primary-menu #mega-menu-v2-primary-menu ul.mega-sub-menu {
+    top: 60px;
+    left: -195%;
+  }
+}
+
+
+/* ======================================================================
+   4) DESKTOP LARGE: 1201px–1400px
+   - Logo sizing
+   ====================================================================== */
+@media (min-width: 1201px) and (max-width: 1400px) {
+
+  .site-branding .site-logo-img img {
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 767px) { 
+	header .custom-logo-link img {
+  		max-width: 350px;
+	}
+}
+
+@media (max-width: 529px) { 
+	header .custom-logo-link img {
+  		max-width: 280px;
+	}
+}
+
+
+/* ======================================================================
+   5) GLOBAL TYPOGRAPHY: Mega Menu Links
+   ====================================================================== */
+li.mega-menu-item > a.mega-menu-link {
+  font-family: 'meltix', system-ui, -apple-system, 'Segoe UI', sans-serif !important;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 700 !important;
+  text-transform: capitalize;
+}
+
+.mega-sub-menu li.mega-menu-item > a.mega-menu-link {
+  font-style: normal;
+}
+
+
+/* ===============================================================================================================
+   GPH – HEADER / MENU RESPONSIVE RULES (ASTRA without any plugin)
+   - Mobile: <= 921px
+   - Desktop base: >= 922px
+   - Desktop medium: 922px–1200px (logo on top, menus below)
+   - Desktop large: 1201px–1400px
+   =============================================================================================================== */
+
+
+
+/* ======================================================================
+   2) DESKTOP BASE: >= 922px
+   - Split mega menu items between left/right sections
+   - Submenu top positioning
+   - Hide mobile header wrapper
+   ====================================================================== */
+@media (min-width: 922px) {
+
+  /* Hide right/left-group items from area */
+  .ast-main-header-wrap .site-header-primary-section-right .menu-primary-menu-container ul.menu li.gph-menu-items-left, 
+  .ast-main-header-wrap .site-header-primary-section-left .menu-primary-menu-container ul.menu li.gph-menu-items-right {
+    display: none;
+  }
+
+/*  Main menu container  */
+ .ast-main-header-wrap .menu-primary-menu-container ul.menu {
+	 display: flex;
+     flex-direction: row;
+ }
+.ast-main-header-wrap .menu-primary-menu-container ul.menu > li.menu-item{
+		position:relative;
+}
+.ast-main-header-wrap .menu-primary-menu-container ul.menu > li.menu-item > a{
+		padding-block:20px;
+		padding-inline: 15px;
+		font-family:var(--font-secondary);
+		font-size: 16px;
+		color: var(--ast-global-color-4);
+		font-weight:600;
+		font-style:italic;
+		transition:all 0.3s ease-in-out;
+}
+.ast-main-header-wrap .menu-primary-menu-container ul.menu > li.menu-item.current-menu-item a,
+.ast-main-header-wrap .menu-primary-menu-container ul.menu > li.menu-item a:hover{
+		color: var(--ast-global-color-7);
+}
+
+/* ============================
+   Mega submenu base (hidden)
+============================ */
+.ast-main-header-wrap .menu-primary-menu-container ul.menu ul.sub-menu {
+  position: absolute;
+  top: 51px;
+  left: -160%;
+  width: 1100px;
+  z-index: 100;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+
+  background: #fff;
+  padding: 15px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: 0px 5px 20px 10px rgba(0, 0, 0, 0.07);
+
+  /* Hidden state */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(14px);
+  pointer-events: none;
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease,
+    visibility 0s linear 300ms;
+}
+
+/* ============================
+   Hover bridge ONLY for items that have submenu
+   - Fallback: WP adds .menu-item-has-children
+   - Modern: :has(> ul.sub-menu)
+============================ */
+
+
+.ast-main-header-wrap .menu-primary-menu-container ul.menu > li.menu-item-has-children::after,
+.ast-main-header-wrap .menu-primary-menu-container ul.menu > li.menu-item:has(> ul.sub-menu)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 143%;
+  height: 20px;
+}
+
+/* ============================
+   Show submenu (hover + keyboard)
+============================ */
+.ast-main-header-wrap .menu-primary-menu-container ul.menu > li.menu-item-has-children:hover > ul.sub-menu,
+.ast-main-header-wrap .menu-primary-menu-container ul.menu > li.menu-item-has-children:focus-within > ul.sub-menu,
+.ast-main-header-wrap .menu-primary-menu-container ul.menu > li.menu-item:has(> ul.sub-menu):hover > ul.sub-menu,
+.ast-main-header-wrap .menu-primary-menu-container ul.menu > li.menu-item:has(> ul.sub-menu):focus-within > ul.sub-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+
+  /* Visible immediately (no delay) */
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease,
+    visibility 0s;
+}
+
+.ast-main-header-wrap .menu-primary-menu-container ul.menu ul.sub-menu li{
+	padding-left:0;
+}
+.ast-main-header-wrap .menu-primary-menu-container ul.menu ul.sub-menu li a{
+	display:block;
+	padding-inline: 10px;
+    padding-block: 10px;
+    background: #fff;
+	border-radius:3px;
+	color: var(--ast-global-color-8);
+}
+
+ .ast-main-header-wrap .menu-primary-menu-container ul.menu ul.sub-menu li:hover a{
+	 background:var(--ast-global-color-8);
+	 color:var(--ast-global-color-4);
+ }
+}
+
+
+/* ======================================================================
+   3) DESKTOP MEDIUM: 922px–1200px
+   - Fix layout break: logo on top, menus below
+   - Mega menu dropdown positioning adjustments for this width
+   ====================================================================== */
+@media (min-width: 922px) and (max-width: 1200px) {
+
+  /* Make header row wrap so logo can occupy full row */
+  #ast-desktop-header .site-primary-header-wrap .ast-builder-grid-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Ensure header sections can grow naturally */
+  #ast-desktop-header .site-primary-header-wrap .site-header-section {
+    height: auto;
+  }
+	
+.ast-primary-header-bar .site-primary-header-wrap {
+    min-height: 120px;
+}
+
+  /* Move center (logo) to top row */
+  #ast-desktop-header .site-primary-header-wrap .ast-grid-section-center {
+    width: 100%;
+    order: -1;
+    justify-content: center;
+    height: auto;
+	margin-bottom:20px;
+  }
+ .ast-main-header-wrap .menu-primary-menu-container ul.menu ul.sub-menu {
+		left:-235%;
+		top:33px;
+		width:900px;
+ }
+
+  /* Remove extra padding around site identity for tight layout */
+  #ast-desktop-header .site-primary-header-wrap .ast-grid-section-center .ast-site-identity {
+    padding: 0;
+  }
+
+  /* Logo size for medium desktops */
+  .site-branding .site-logo-img img {
+    max-width: 420px;
+  }
+
+
+
+
+}
+
+
+/* ======================================================================
+   4) DESKTOP LARGE: 1201px–1400px
+   - Logo sizing
+   ====================================================================== */
+@media (min-width: 1201px) and (max-width: 1400px) {
+
+  .site-branding .site-logo-img img {
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 767px) { 
+	header .custom-logo-link img {
+  		max-width: 350px;
+	}
+}
+
+@media (max-width: 529px) { 
+	header .custom-logo-link img {
+  		max-width: 280px;
+	}
+}
+
+
+
+/* ======================================================================
+   6) FOOTER LAYOUT TWEAKS
+   ====================================================================== */
+.ast-builder-footer-grid-columns.site-primary-footer-inner-wrap {
+  padding-inline: 20px;
+}
+
+.site-footer-primary-section-1 {
+  flex-direction: column;
+  justify-content: flex-start;
+  border-right: 1px solid #eee;
+  padding-right: 30px;
+}
+
+.ast-footer-social-1-wrap.ast-footer-social-wrap {
+  display: flex;
+}
+
+.footer-widget-area img {
+  max-width: 400px;
+}
+
+.site-footer-primary-section-2 {
+  margin-top: 50px;
+}
+
+
+@media (max-width: 921px) {
+	.site-primary-footer-wrap .site-footer-primary-section-2  {
+		margin-top:0;
+		margin-bottom:0;
+		display:flex;
+		flex-direction:column;
+		gap:20px;
+	}
+	.ast-builder-footer-grid-columns.site-primary-footer-inner-wrap.ast-builder-grid-row{
+		align-items:center;
+	}
+	
+	.site-footer-primary-section-1 .footer-widget-area img {
+  		max-width: 300px;
+	}
+	
+	
+}
+
+@media (max-width: 767px) { 
+	.site-footer{
+		text-align:center;
+	}
+	.ast-builder-footer-grid-columns.site-primary-footer-inner-wrap.ast-builder-grid-row{
+		    grid-template-columns: repeat(1, 1fr);
+	}
+	
+	.site-footer-primary-section-1 .footer-widget-area img {
+  		max-width: 350px;
+	}
+	.site-footer-primary-section-1 {
+  		border-right: 0;
+		justify-content:center;
+	}
+}
+
+@media (max-width: 529px) { 
+	.site-footer-primary-section-1 .footer-widget-area img {
+  		max-width: 280px;
+	}
+}
+/* ==============================================================================
+   GPH — HOW-TO VIDEOS (PRODUCTION SAFE)
+   Scope: body.gph-howto ONLY
+============================================================================== */
+
+/* ------------------------------------------------------------------
+   Design tokens (safe CSS variables)
+------------------------------------------------------------------ */
+body.gph-howto {
+  --gph-content-max: 1200px;
+  --gph-video-max: 1100px;
+  --gph-video-radius: 16px;
+  --gph-video-shadow: 0 22px 45px rgba(0,0,0,.14);
+  --gph-list-max: 1200px;
+/* Card system */
+  --gph-card-radius: 14px;
+  --gph-card-border: rgba(0, 0, 0, 0.08);
+  --gph-card-bg: #fff;
+
+  --gph-card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --gph-card-shadow-hover: 0 18px 45px rgba(0, 0, 0, 0.12);
+
+  /* Astra palette */
+  --gph-text: var(--ast-global-color-8);
+  --gph-muted: var(--ast-global-color-1);
+  --gph-accent: var(--ast-global-color-0);
+
+  /* Badge defaults */
+  --gph-badge-bg: rgba(0,0,0,.04);
+  --gph-badge-border: rgba(0,0,0,.10);
+  --gph-badge-icon: rgba(0,0,0,.55);
+
+  /* Active/Hover border tints */
+  --gph-accent-border: color-mix(in srgb, var(--gph-accent) 28%, transparent);
+  --gph-accent-focus:  color-mix(in srgb, var(--gph-accent) 40%, transparent);
+}
+
+/* ------------------------------------------------------------------
+   Page container — Astra-safe width control
+   (Do NOT touch global Astra containers)
+------------------------------------------------------------------ */
+body.gph-howto header.entry-header,
+body.gph-howto .entry-content {
+  max-width: var(--gph-content-max);
+  margin-inline: auto;
+  padding-inline: clamp(16px, 4vw, 32px);
+}
+body.gph-howto h1.entry-title{
+	text-align:center;
+}
+
+/* ------------------------------------------------------------------
+   Layout: Treat video + buttons as ONE vertical stack
+   Gutenberg wraps them in wp-block-group — leverage it
+------------------------------------------------------------------ */
+body.gph-howto .wp-block-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top:0 !important;
+  padding-top:0 !important;
+}
+body.gph-howto .entry-content > .wp-block-group{
+	padding-top:0 !important;
+}
+
+/* ------------------------------------------------------------------
+   Standardize ALL YouTube videos
+   - Fixed ratio (prevents black collapse)
+
+------------------------------------------------------------------ */
+body.gph-howto .entry-content .wp-block-embed-youtube {
+  width: 100%;
+  margin: 0 auto 0;
+}
+
+/* Video wrapper controls actual dimensions */
+body.gph-howto
+.entry-content
+.wp-block-embed-youtube
+.wp-block-embed__wrapper {
+  width: 100%;
+  max-width: var(--gph-video-max);
+  margin-inline: auto;
+
+  aspect-ratio: 16 / 9;
+  border-radius: var(--gph-video-radius);
+  overflow: hidden;
+  background: #000;
+  box-shadow: var(--gph-video-shadow);
+}
+
+/* iframe fills wrapper perfectly */
+body.gph-howto
+.entry-content
+.wp-block-embed-youtube
+.wp-block-embed__wrapper iframe {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  border: 0;
+}
+
+/* Vertical video support (rare but safe) */
+body.gph-howto
+.entry-content
+.wp-block-embed-youtube.wp-embed-aspect-9-16
+.wp-block-embed__wrapper {
+  aspect-ratio: 9 / 16;
+  max-width: 520px;
+}
+
+/* Prevent absurd heights on large screens */
+@media (min-width: 1024px) {
+  body.gph-howto
+  .entry-content
+  .wp-block-embed-youtube
+  .wp-block-embed__wrapper {
+    max-height: 75vh;
+  }
+}
+
+/* ------------------------------------------------------------------
+   STEP 2: Buttons BELOW video
+   - Same width context as video
+   - Centered
+   - Wrap naturally on small screens
+------------------------------------------------------------------ */
+body.gph-howto .wp-block-buttons {
+  width: 100%;
+  max-width: var(--gph-video-max);
+  margin: 2;
+ display:flex;
+ justify-content:center !important;
+ flex-wrap:wrap;
+	
+}
+body.gph-howto .wp-block-buttons .wp-block-button{
+  display: block;
+  margin: 0;
+  width: 300px;
+  flex-basis:auto;
+}
+body.gph-howto .wp-block-buttons .wp-block-button .wp-block-button__link{
+	display: block;
+    width: 100%;
+    padding-block: 15px;
+    border-radius: 5px;
+    outline: 0 !important;
+    border: 0 !important;
+    transition: background-color 300ms linear;
+}
+body.gph-howto .wp-block-buttons .wp-block-button .wp-block-button__link:hover{
+	background-color:var(--ast-global-color-1);
+}
+body.gph-howto .wp-block-heading{
+	text-transform:uppercase;
+}
+/*========================================================
+ *          PRODUCT SECTION in HOW TO VIDEOS 
+ * =======================================================*/
+/* ==============================================================================
+   GPH — RECOMMENDED PRODUCTS (Woo Blocks)
+   Goal: max 3 products per row + premium card styling + consistent buttons
+============================================================================== */
+body.gph-howto h2.wp-block-heading{
+    margin-top: 80px;
+    margin-block-end: 30px !important;
+    margin-bottom: 10px;
+    font-size: 24px;
+    text-transform: uppercase;
+    text-align: left;
+}
+/* Grid: force 3 columns max (ignore the columns-5 class) */
+.entry-content .wc-block-product-template {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 26px !important;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Tablet: 2 columns */
+@media (max-width: 1024px) {
+  .entry-content .wc-block-product-template {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* Mobile: 1 column */
+@media (max-width: 640px) {
+  .entry-content .wc-block-product-template {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Each product card (li) */
+.entry-content .wc-block-product-template > li.wc-block-product {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 16px;
+  background: #fff;
+
+  box-shadow: 0 0 0 rgba(28, 21, 91, 0);
+  transform: translateY(0);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Hover lift */
+.entry-content .wc-block-product-template > li.wc-block-product:hover {
+  border-color: rgba(28, 21, 91, 0.10);
+  box-shadow: 0 10px 26px rgba(28, 21, 91, 0.08);
+  transform: translateY(-3px);
+}
+
+/* Image wrap + image */
+.entry-content .wc-block-product-template .wc-block-components-product-image {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.entry-content .wc-block-product-template .wc-block-components-product-image img {
+  width: 100%;
+  height: auto;
+  max-height:300px;
+  object-fit:contain;
+  display: block;
+  transform: scale(1);
+  transition: transform .25s ease;
+}
+
+.entry-content .wc-block-product-template > li.wc-block-product:hover
+.wc-block-components-product-image img {
+  transform: scale(1.03);
+}
+
+/* Title */
+.entry-content .wc-block-product-template .wp-block-post-title,
+.entry-content .wc-block-product-template .wc-block-components-product-name {
+  margin: 6px 0 0;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+body.gph-howto .wc-block-product .wp-block-post-title a{
+	font-size:18px !important;
+	text-decoration:none;
+}
+
+/* Price */
+.entry-content .wc-block-product-template .wc-block-components-product-price {
+  margin-top: 2px;
+  font-weight: 600;
+  font-size:16px;
+}
+
+/* Button area: keep aligned + consistent */
+.entry-content .wc-block-product-template .wp-block-button,
+.entry-content .wc-block-product-template .wc-block-components-product-button {
+  margin-top: auto; /* pushes button to bottom for equal-height cards */
+}
+
+/* Button styling */
+.entry-content .wc-block-product-template a.wp-block-button__link,
+.entry-content .wc-block-product-template .wc-block-components-product-button__button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 5px;
+  font-size:16px !important;
+  text-transform:capitalize;
+  font-weight: 600;
+  padding: 12px 14px;
+
+  transition: transform .2s ease, filter .2s ease;
+}
+
+.entry-content .wc-block-product-template > li.wc-block-product:hover
+.wc-block-components-product-button__button {
+  transform: translateY(-1px);
+}
+
+
+/* How TO Videos Main page */
+/* =========================
+   Grid layout
+========================= */
+body.gph-howto .entry-content ul.wp-block-page-list {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0 28px;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+@media (min-width: 900px) {
+  body.gph-howto .entry-content ul.wp-block-page-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+body.gph-howto .entry-content ul.wp-block-page-list > li.wp-block-pages-list__item {
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================
+   Card link
+========================= */
+body.gph-howto .entry-content a.wp-block-pages-list__item__link {
+  position: relative;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 18px 18px;
+
+  border: 1px solid var(--gph-card-border);
+  border-radius: var(--gph-card-radius);
+  background: var(--gph-card-bg);
+
+  color: var(--gph-text);
+  text-decoration: none;
+
+  transform: translateY(0);
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+/* Left play badge: gray circle */
+body.gph-howto .entry-content a.wp-block-pages-list__item__link::before {
+  content: "▶";
+  flex: 0 0 auto;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+
+  display: flex;
+  justify-content:center;
+  align-items:center;
+
+  background: var(--gph-badge-bg);
+  border: 1px solid var(--gph-badge-border);
+
+  color: var(--gph-badge-icon);
+  font-size: 14px;
+  line-height: 1;
+
+  transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+/* Right chevron (short, premium) */
+body.gph-howto .entry-content a.wp-block-pages-list__item__link::after {
+  content: "»";
+  margin-left: auto;
+
+  color: rgba(0,0,0,.32);
+  font-size: 20px;
+  line-height: 1;
+
+  transform: translateX(-3px);
+  opacity: .75;
+  transition: transform 180ms ease, color 180ms ease, opacity 180ms ease;
+}
+
+/* Typography */
+body.gph-howto .entry-content a.wp-block-pages-list__item__link {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+/* Hover: card lift + badge turns accent */
+body.gph-howto .entry-content a.wp-block-pages-list__item__link:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--gph-card-shadow);
+  border-color: var(--gph-accent-border);
+}
+
+body.gph-howto .entry-content a.wp-block-pages-list__item__link:hover::before {
+  background: var(--gph-accent);
+  border-color: var(--gph-accent);
+  color: #fff;
+}
+
+body.gph-howto .entry-content a.wp-block-pages-list__item__link:hover::after {
+  transform: translateX(6px);
+  color: var(--gph-accent);
+  opacity: 1;
+}
+
+/* Focus (keyboard) */
+body.gph-howto .entry-content a.wp-block-pages-list__item__link:focus-visible {
+  outline: 3px solid var(--gph-accent-focus);
+  outline-offset: 3px;
+  box-shadow: var(--gph-card-shadow-hover);
+}
+
+/* Active/current item (WP usually adds one of these) */
+body.gph-howto .entry-content li.current_page_item > a.wp-block-pages-list__item__link,
+body.gph-howto .entry-content a.wp-block-pages-list__item__link[aria-current="page"] {
+  border-color: var(--gph-accent);
+  box-shadow: var(--gph-card-shadow);
+}
+
+body.gph-howto .entry-content li.current_page_item > a.wp-block-pages-list__item__link::before,
+body.gph-howto .entry-content a.wp-block-pages-list__item__link[aria-current="page"]::before {
+  background: var(--gph-accent);
+  border-color: var(--gph-accent);
+  color: #fff;
+}
+
+body.gph-howto .entry-content li.current_page_item > a.wp-block-pages-list__item__link::after,
+body.gph-howto .entry-content a.wp-block-pages-list__item__link[aria-current="page"]::after {
+  color: var(--gph-accent);
+  opacity: 1;
+}
+
+/* Nested lists safety */
+body.gph-howto .entry-content ul.wp-block-page-list ul {
+  margin-top: 10px;
+  padding-left: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+@media (min-width: 981px) {
+	/* About Us Page */
+	.gph-story-wrapper{
+		position:relative !important;
+	}
+	.gph-story{
+		position:sticky !important;
+		top:60px; 
+		left: 0;
+	}
+}
+
+/*============================================================================
+ * 									 FAQ 
+ * =========================================================================*/
+.et-db #et-boc .et-l .et_pb_accordion_0 .et_pb_toggle_title:before{
+	transform: rotate(0deg);
+	transition: transform 0.3s ease-in-out;
+}
+.et-db #et-boc .et-l .et_pb_accordion_0 .et_pb_toggle_open .et_pb_toggle_title:before {
+    display: block !important;
+    transform: rotate(180deg);
+}
+.et-db #et-boc .et-l .et_pb_accordion_0.et_pb_accordion .et_pb_toggle_close:hover h5.et_pb_toggle_title{
+	color: var(--ast-global-color-1) !important;
+}
+
+/*=======================================================================
+ *  											Contact Form 
+ * ======================================================================*/
+.gform_required_legend{
+	display:none !important;
+}
+.et-db #et-boc .et-l .et_pb_module .gph-global-form .gfield textarea,
+.gph-global-form .gfield  textarea,
+.et-db #et-boc .et-l .et_pb_module .gph-global-form .gfield input,
+.gph-global-form .gfield input{
+	width: 100% !important;
+	background: #fff !important;
+	border-radius: 8px;
+	border: 0 !important;
+	outline:0 !important;
+	padding: 15px 15px;
+
+	
+}
+.et-db #et-boc .et-l .et_pb_module .gph-global-form .gfield textarea::placeholder,
+.et-db #et-boc .et-l .et_pb_module .gph-global-form input::placeholder,
+.gph-global-form .gfield input::placeholder{
+	font-family: var(--font-accent);
+	font-weight:600; 
+	font-size: 16px;
+	color: #000;
+	
+}
+.et-db #et-boc .et-l .et_pb_module .gph-global-form .gfield textarea,
+.gph-global-form .gfield  textarea{
+	height:150px;
+}
+
+.et-db #et-boc .et-l .et_pb_module .gph-global-form .gform_button.button ,
+.gph-global-form .gform_button.button{
+	border-radius:8px;
+	display: inline-block;
+    padding: 11px 22px !important;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+	background : var(--ast-global-color-0);
+	color: #fff;
+	margin-top: 20px;
+	transition: all 0.3s ease-in-out;
+} 
+.et-db #et-boc .et-l .et_pb_module .gph-global-form .gform_button.button:hover ,
+.gph-global-form .gform_button.button:hover{
+	background: var(--ast-global-color-1);
+}
+
+@media (max-width: 529px){
+	
+.et-db #et-boc .et-l .et_pb_module .gph-global-form .gform_button.button ,
+	.gph-global-form .gform_button.button{
+		display:block;
+		width: 100% !important;
+		text-align:center !important;
+	}
+}
+
+/* =====================================================
+ * Pagination (Astra)
+ * ===================================================== */
+
+.ast-pagination .navigation .nav-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Page number + current page base styles */
+.ast-pagination .page-numbers.current,
+.ast-pagination a.page-numbers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+	
+  width: 40px;
+  height:40px;
+	
+  font-size: 14px !important;
+  line-height: 1 !important;
+  font-weight: 600;
+
+  border-radius: 3px;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Number buttons only (exclude Prev/Next) */
+.ast-pagination a.page-numbers:not(.prev):not(.next) {
+  border: 1px solid var(--ast-global-color-0);
+  background: transparent;
+}
+
+/* Hover + active/current state */
+.ast-pagination a.page-numbers:not(.prev):not(.next):hover,
+.ast-pagination span.page-numbers.current {
+  color: var(--ast-global-color-4);
+  background: var(--ast-global-color-0);
+}
+
+/* Prev/Next layout consistency */
+.ast-pagination .prev,
+.ast-pagination .prev:visited,
+.ast-pagination .prev:focus,
+.ast-pagination .next,
+.ast-pagination .next:visited,
+.ast-pagination .next:focus {
+  display: flex;
+}
+
+/* Prev/Next link styling */
+.ast-pagination a.prev,
+.ast-pagination a.next {
+  border: 0;
+  float: none;
+  color: var(--ast-global-color-8);
+  transition: color 0.3s ease-in-out;
+}
+
+.ast-pagination a.prev:hover,
+.ast-pagination a.next:hover {
+  color: var(--ast-global-color-4);
+}
+
+.ast-pagination .prev, .ast-pagination .prev:visited, .ast-pagination .prev:focus, .ast-pagination .next, .ast-pagination .next:visited, .ast-pagination .next:focus {
+    width: auto !important;
+	height: 40px !important;
+    border: 1px solid var(--ast-global-color-0) !important;
+}
+.ast-pagination .prev:hover, 
+.ast-pagination .next:hover{
+	color: var(--ast-global-color-4);
+    background: var(--ast-global-color-0);
+}
+
+/* =====================================================
+ * Header Search (Astra)
+ * ===================================================== */
+
+/* Search form wrapper */
+.ast-header-search .ast-search-menu-icon form.search-form {
+  border: 0;
+  outline: 0;
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 100;
+}
+
+/* Make label align nicely (input + button in one row) */
+.ast-header-search .ast-search-menu-icon form.search-form label {
+  display: flex;
+}
+
+/*=====================================================
+ *  Mobile View 
+ * =====================================================*/
+#ast-mobile-header .ast-header-search .ast-search-menu-icon form.search-form{
+	padding-left:0;
+	left:0;
+}
+
+#ast-mobile-header .ast-header-search .search-form #search-field{
+	max-width: 280px;
+}
+
+
+/* =====================================================
+ * Search Placeholder Color (Cross-browser)
+ * ===================================================== */
+
+.ast-header-search .search-form #search-field::placeholder {
+  color: #757575;
+}
+
+.ast-header-search .search-form #search-field::-webkit-input-placeholder {
+  color: #757575;
+}
+
+.ast-header-search .search-form #search-field::-moz-placeholder {
+  color: #757575;
+}
+
+.ast-header-search .search-form #search-field:-ms-input-placeholder {
+  color: #757575;
+}
+
+/* =====================================================
+ * Search Submit Button / Icon
+ * ===================================================== */
+
+.ast-header-search .ast-search-menu-icon .search-form button.search-submit {
+  padding-inline: 12px;
+  display: block;
+}
+
+.ast-header-search .ast-search-menu-icon .search-form button.search-submit .ast-icon {
+  color: #757575;
+}
+
+
+/* =====================================================
+   Divi Home Page — Gas Pump Heaven
+   Notes:
+   - Keep selectors scoped; Divi can override styles easily.
+   - Prefer transform-only hover for “premium” icon nav.
+   ===================================================== */
+
+/* =====================================================
+   Slider
+   ===================================================== */
+
+.gph-slider {
+  /* reserved for future slider-level styling */
+}
+
+@media (max-width: 767px) {
+  .et-db #et-boc .et-l .gph-slider.et_pb_slider .et_pb_slide {
+    /* If you need the image to fit on mobile, uncomment:
+       background-size: contain !important;
+    */
+  }
+}
+
+/* =====================================================
+   Shop For — Category Grid / Icons
+   Mobile: flex (stack)
+   Desktop: grid (layout spans)
+   ===================================================== */
+
+/* Mobile-first layout */
+.et-db #et-boc .et-l .et_pb_row .et_pb_column.gph-shop-for {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 50px;
+  margin-bottom: 50px !important;
+}
+
+/* “SHOP FOR” indicator blurb */
+.et-db #et-boc .et-l .et_pb_blurb_0.et_pb_blurb.ghp-shop-for-indicator {
+  display: flex;
+  flex-direction: column;
+/*   justify-content: center; */
+}
+
+/* Reverse content order (text below icon) for indicator */
+.et-db #et-boc .et-l .et_pb_blurb_0.et_pb_blurb.ghp-shop-for-indicator .et_pb_blurb_content {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+/* Indicator icon rotation (mobile) */
+.et-db #et-boc .et-l
+.et_pb_blurb_0.et_pb_blurb.ghp-shop-for-indicator
+.et_pb_blurb_content
+.et_pb_main_blurb_image
+.et-pb-icon {
+  transform: rotate(90deg);
+}
+
+/* Blurb card sizing (mobile) */
+.et-db #et-boc .et-l .gph-shop-for .et_pb_blurb {
+  width: 280px;
+  border-radius: 10px;
+}
+
+/* Image container cap */
+.et-db #et-boc .et-l .gph-shop-for .et_pb_main_blurb_image {
+  max-height: 100px;
+}
+
+/* Premium hover: scale only (recommended for icon-like images) */
+.et-db #et-boc .et-l .gph-shop-for .et_pb_main_blurb_image img {
+  display: block;
+  transform: scale(1);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.et-db #et-boc .et-l .gph-shop-for .et_pb_blurb:hover .et_pb_main_blurb_image img {
+  transform: scale(1.12);
+}
+
+/* -----------------------------------------------------
+   >= 767px: Grid layout (3 columns) + indicator spans 3 rows
+   ----------------------------------------------------- */
+@media (min-width: 767px) {
+  .et-db #et-boc .et-l .et_pb_row .et_pb_column.gph-shop-for {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 0;
+    align-items: stretch;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .et-db #et-boc .et-l .gph-shop-for .et_pb_blurb {
+    width: auto;
+    border-radius: 0;
+  }
+
+  /* Indicator icon rotation reset (desktop) */
+  .et-db #et-boc .et-l
+  .et_pb_blurb_0.et_pb_blurb.ghp-shop-for-indicator
+  .et_pb_blurb_content
+  .et_pb_main_blurb_image
+  .et-pb-icon {
+    transform: rotate(0deg);
+  }
+
+  /* “SHOP FOR” block spans full height (3 rows) on 3-col grid */
+  .et-db #et-boc .et-l .et_pb_blurb_0.et_pb_blurb.ghp-shop-for-indicator {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+  }
+}
+
+/* -----------------------------------------------------
+   >= 921px: 4 columns, indicator spans 2 rows
+   ----------------------------------------------------- */
+@media (min-width: 921px) {
+  .et-db #et-boc .et-l .et_pb_row .et_pb_column.gph-shop-for {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, auto);
+  }
+
+  .et-db #et-boc .et-l .et_pb_blurb_0.et_pb_blurb.ghp-shop-for-indicator {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+}
+
+/* -----------------------------------------------------
+   >= 1200px: 7 columns, indicator becomes normal 1-row item
+   ----------------------------------------------------- */
+@media (min-width: 1200px) {
+  .et-db #et-boc .et-l .et_pb_row .et_pb_column.gph-shop-for {
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  .et-db #et-boc .et-l .et_pb_blurb_0.et_pb_blurb.ghp-shop-for-indicator {
+    grid-row: 1 / span 1;
+  }
+}
+
+/* =====================================================
+   Home Card Wrapper (hover background)
+   ===================================================== */
+
+.gph-home-cart-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.gph-home-cart-wrapper:hover {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+/* =====================================================
+   Gas Pump Heaven — Tapered Double Divider
+   ===================================================== */
+
+.gph-gradient-divider {
+  max-width: 760px;
+  margin-inline: auto;
+  position: relative;
+}
+
+/* Divi spacer element height control */
+.et-db #et-boc .et-l .et_pb_space.gph-gradient-divider {
+  height: 6px;
+  margin-bottom: 30px !important;
+}
+
+/* Top thin soft line */
+.gph-gradient-divider::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    rgba(127, 183, 217, 0.07),
+    rgba(110, 170, 215, 0.7) 35%,
+    rgba(110, 170, 215, 0.7) 65%,
+    rgba(127, 183, 217, 0.07)
+  );
+}
+
+/* Bottom thicker tapered line (slightly inset width) */
+.gph-gradient-divider::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 90%;
+  height: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to right,
+    rgba(127, 183, 217, 0.07),
+    rgba(110, 170, 215, 0.7) 25%,
+    rgba(110, 170, 215, 0.7) 65%,
+    rgba(127, 183, 217, 0.07)
+  );
+}
+/* =========================
+   404 Page Styling (Improved)
+========================= */
+
+.gph-404 {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(70px, 8vw, 110px) 20px;
+  text-align: center;
+}
+
+.gph-404-title {
+  font-size: clamp(32px, 5vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.gph-404-text {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #6b7280;
+  max-width: 560px;
+  margin: 0 auto 28px;
+}
+
+/* Search wrapper */
+.gph-404-search {
+  max-width: 460px;
+  margin: 0 auto 26px;
+}
+
+/* Make the search feel like a single component */
+.gph-404-search .search-form {
+  position: relative;
+  border-radius: 5px;
+  border: 1px solid rgba(0,0,0,0.12);
+  overflow: hidden;
+  background: #fff;
+}
+
+/* Input */
+.gph-404-search .search-form .search-field {
+  width: 100%;
+  padding: 14px 64px 14px 16px; /* space for button */
+  border: 0 !important;
+  outline: none;
+  font-size: 16px;
+  background: transparent;
+}
+
+/* Proper focus ring (premium + accessible) */
+.gph-404-search .search-form:focus-within {
+  border-color: rgba(0,0,0,0.2);
+  box-shadow: 0 0 0 4px rgba(110, 170, 215, 0.25); /* uses your theme vibe */
+}
+
+/* Button */
+.gph-404-search .search-form .search-submit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  min-width: 56px;
+  border: 0;
+  border-left: 1px solid rgba(0,0,0,0.10);
+  border-radius: 0;
+  background: var(--ast-global-color-0);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+/* Ensure icon stays centered */
+.gph-404-search .search-form .search-submit svg,
+.gph-404-search .search-form .search-submit i {
+  margin: 0 auto;
+}
+
+/* Hover/active states */
+.gph-404-search .search-form .search-submit:hover {
+  background: var(--ast-global-color-1);
+}
+
+.gph-404-search .search-form .search-submit:active {
+  transform: translateY(1px);
+}
+
+/* If Astra outputs an input[type="submit"] too, hide it cleanly */
+.gph-404-search .search-form input.search-submit {
+  opacity: 0;
+  width: 56px;
+  padding: 0;
+  margin: 0;
+}
+
+/* Divider - make it subtle */
+.gph-404-search::after {
+  content: "";
+  display: block;
+  width: 196px;
+  height: 1px;
+  background: var(--ast-global-color-5);
+  opacity:0.7
+  margin: 30px auto 0;
+}
+
+/* CTA button */
+.gph-404-actions a.button.back-to-home {
+  padding: 14px 34px;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+
+
+/* My Account Page */
+
+.woocommerce-account{
+	
+}
+.woocommerce-account .woocommerce-MyAccount-navigation ul{
+	padding:0;
+	margin-bottom: clamp(30px, 1vw, 5px);
+}
+
+.woocommerce-account .woocommerce-MyAccount-content > p{
+	margin-bottom: 15px;
+}
+.woocommerce-account .woocommerce-Address-title.title{
+		padding:15px;
+}
+.woocommerce-account .woocommerce-MyAccount-content form > h2,
+.woocommerce-account .woocommerce-Address h2{
+	text-transform:uppercase;
+	font-size: clamp(20px, 2vw, 24px);
+}
+.woocommerce-account .woocommerce-MyAccount-navigation-link{
+	border:0 solid transparent;
+	border-width: 0;
+}
+
+.woocommerce-MyAccount-navigation-link a{
+	border: 1px solid var(--ast-global-color-1);
+	background: var(--ast-global-color-4);
+	color: var(--ast-global-color-1);
+	transition: all 0.3s ease-in-out;
+	border-bottom:0;
+}
+.woocommerce-MyAccount-navigation-link:last-child a {
+  border-bottom: 1px solid;
+}
+.woocommerce-account .woocommerce-MyAccount-navigation-link.is-active a, 
+.woocommerce-MyAccount-navigation-link:hover a{
+	background: var(--ast-global-color-1);
+	color: var(--ast-global-color-4);
+}
+
+
+
+/* ************Home Page => Category Section***********/
+.gph-home-cart-wrapper{
+	overflow:hidden;
+	
+}
+
+/* Black Overlay */
+.gph-home-cart-wrapper::after{
+	
+	content:"";
+	position:absolute;
+	background:rgba(0,0,0,0.45);
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	opacity:0;
+	z-index:-1;
+	transition:opacity 0.3s ease-in-out;
+}
+
+.gph-home-cart-wrapper:hover::after{
+	opacity:1;
+}
+
+
+/* SEE ALL BUTTON */
+.gph-home-cart-wrapper .et_pb_button.gph-home-cart_btn{
+	opacity: 0;
+	visibility:hidden;
+	top: 30px;
+	transition: all 0.6s ease-in-out;
+}
+.gph-home-cart-wrapper:hover .et_pb_button.gph-home-cart_btn{
+	opacity: 1;
+	visibility:visible;
+	top: 0;
+}
+
+/* How To Videos => Related Product Section */
+.et-db #et-boc .et-l .et_pb_module h2.gph-video-products-title{
+	font-weight: 700;
+    text-transform: uppercase;
+    font-size: 26px;
+    color: #000000 !important;
+	margin-top: 80px;
+}
+
+/* How to videos => related Product section */
+.et-db #et-boc .et-l .et_pb_module .gph-video-products ul.products{
+	display:grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap:20px;
+	margin-left:0;
+	margin-top: 30px;
+}
+
+
+/* ==========================================================
+   PRODUCT CARDS (Shop / Archive / Loop)
+   ========================================================== */
+
+/* Card Wrapper (li.product) */
+.et-db #et-boc .et-l .et_pb_module .gph-video-products ul.products li.product {
+  padding: 15px 15px 20px;
+  border: 1px solid var(--ast-global-color-5);
+  border-radius: 10px;
+  overflow: hidden;
+  justify-content:space-between;
+  box-shadow: 0 0 0 rgba(28, 21, 91, 0);
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+  /* Layout overrides */
+  width: 100% !important;
+  margin: 0 !important;
+  margin-bottom: 30px !important;
+}
+
+/* Hover: lift + shadow */
+.et-db #et-boc .et-l .et_pb_module .gph-video-products ul.products li.product:hover {
+  box-shadow: 0 5px 20px 5px rgba(28, 21, 91, 0.05);
+  transform: translateY(-3px);
+}
+
+
+/*---------- Start ------------- Product Image */
+.et-db #et-boc .et-l .et_pb_module .gph-video-products ul.products li.product .astra-shop-thumbnail-wrap{
+  position: relative;
+  display: inline-block;
+  border-radius: 6px; 
+  overflow: hidden;
+  margin-bottom: 10px;
+  text-align: center;
+  will-change: transform;
+}
+
+
+
+/* product image */
+.et-db #et-boc .et-l .et_pb_module .gph-video-products ul.products li.product .astra-shop-thumbnail-wrap .et_shop_image img {
+ 
+  display: block;
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+  margin-bottom: 0;
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
+  will-change:  transform;
+}
+
+
+
+
+/* hover scale effect */
+.et-db #et-boc .et-l .et_pb_module .gph-video-products ul.products li.product:hover .et_shop_image img {
+  transform: scale(1.03);
+}
+
+
+
+/*---------- End ------------- Product Image */
+
+/* Product Content (summary wrapper) */
+.et-db #et-boc .et-l .et_pb_module .gph-video-products ul.products li.product .astra-shop-summary-wrap,
+.et-db #et-boc .et-l .et_pb_module .gph-video-products ul.products li.product .astra-shop-summary-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  position: static;
+  overflow: hidden;
+  
+}
+
+/* Category label */
+.et-db #et-boc .et-l .et_pb_module .gph-video-products ul.products li.product .astra-shop-summary-wrap .ast-woo-product-category{
+  width: 100%;
+  font-size: 14px;
+}
+
+/* Product title link */
+.et-db #et-boc .et-l .et_pb_module .gph-video-products ul.products li.product .astra-shop-summary-wrap .ast-loop-product__link{
+  width: 100%;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--ast-global-color-5);
+  color: var(--ast-global-color-2);
+  text-transform: uppercase;
+  transition: color 0.3s ease-in-out;
+}
+.et-db #et-boc .et-l .et_pb_module .gph-video-products ul.products li.product .astra-shop-summary-wrap .ast-loop-product__link:hover{
+	color: var(--ast-global-color-0);
+}
+.et-db #et-boc .et-l .et_pb_module .gph-video-products ul.products li.product .astra-shop-summary-wrap .woocommerce-loop-product__title{
+	text-transform:inherit;
+	color: inherit;
+	font-size: 1em;
+	font-weight:600;
+}
+
+/* Product Meta: price + button */
+.et-db #et-boc .et-l .et_pb_module .gph-video-products ul.products li.product .astra-shop-summary-wrap .price{
+  word-break: break-word;
+  flex: 1 0 0;
+  margin-bottom: 0;
+}
+.et-db #et-boc .et-l .et_pb_module .gph-video-products ul.products li.product .astra-shop-summary-wrap .button {
+  flex-grow:1;
+  max-width:145px;
+  padding: 12px 15px;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 16px;
+  margin: 0;
+  border-radius: 3px;
+  color: #fff;
+  background: var(--ast-global-color-0);
+}
+.et-db #et-boc .et-l .et_pb_module .gph-video-products ul.products li.product .astra-shop-summary-wrap .button.product_type_external{
+	max-width:100%;
+}
+.et-db #et-boc .et-l .et_pb_module .gph-video-products ul.products li.product .astra-shop-summary-wrap .button:hover{
+	background: var(--ast-global-color-7);
+}
+.et-db #et-boc .et-l .et_pb_module .gph-video-products a.button.added::after{
+	margin-left:0 !important;
+    vertical-align: bottom;
+    margin-right: 3px;
+    order: -1;
+}
+
+/* Product Added to Cart Button */
+.et-db #et-boc .et-l .et_pb_module .gph-video-products a.added_to_cart {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    text-align: center;
+    padding: 10px 15px;
+    border-radius: 5px;
+    line-height: 1.3;
+    text-transform: capitalize;
+    color: #fff;
+	background: var(--ast-global-color-1);
+	transition:all 0.3s ease-in-out;
+}
+.et-db #et-boc .et-l .et_pb_module .gph-video-products a.added_to_cart:hover{
+	background: var(--ast-global-color-6);
+}
+
+/* Responsive Grid Columns */
+@media (max-width: 1200px) {
+  .et-db #et-boc .et-l .et_pb_module .gph-video-products ul.products {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 921px) {
+  .et-db #et-boc .et-l .et_pb_module .gph-video-products ul.products {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .et-db #et-boc .et-l .et_pb_module .gph-video-products ul.products li.product,
+  .et-db #et-boc .et-l .et_pb_module .gph-video-products ul.products li.product {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 767px) {
+	
+  .et-db #et-boc .et-l .et_pb_module .gph-video-products ul.products {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+	
+  .et-db #et-boc .et-l .et_pb_module .gph-video-products ul.products {
+    text-align:center !important;
+  }
+  .et-db #et-boc .et-l .et_pb_module .gph-video-products ul.products li.product .astra-shop-summary-wrap,
+  .et-db #et-boc .et-l .et_pb_module .gph-video-products ul.products li.product .astra-shop-summary-wrap {
+	  flex-direction:column;
+  }
+  .et-db #et-boc .et-l .et_pb_module .gph-video-products ul.products li.product .astra-shop-summary-wrap .price {
+	  margin-bottom:10px;
+  }
+	
+}
+
+
+
+
+.site-footer-primary-section-1 {
+	border-right: 1px solid #4c4b4b;
+}
+
+.widget_nav_menu li {
+	margin-bottom: 12px;
+}
+
+@media (min-width: 1481px) {
+	.site-footer-below-section-1 {
+		padding-inline: 20px;
+	}
+}
+/* Make Astra container full-width only when the page contains Divi Builder content */
+.ast-container:has(#et-boc) {
+  max-width: none !important;
+  width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+/* Make Divi wrapper full-width */
+.entry-content[data-ast-blocks-layout] > #et-boc{
+  width: 100% !important;
+  max-width: none !important;
+}
+/* Optional: remove default spacing around Divi content inside Astra entry content */
+.entry-content:has(#et-boc) {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+
+@media screen and (min-width: 922px){
+    .footer-spacer{
+        display:none;
+    }
+
+}
+@media screen and (max-width: 921px){
+    .site-footer-primary-section-1{
+        border:0;
+        border-color: transparent;
+    }
+}

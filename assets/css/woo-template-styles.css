@@ -1,0 +1,854 @@
+.page-title{
+	text-transform:uppercase;
+}
+
+/* Breadcrumbs */
+.breadcrumbs.woo-breadcrumbs .breadcrumb-trail{
+	display:inline-block;
+	padding: 5px 15px;
+    border-radius: 5px;
+    background: var(--ast-global-color-5);
+	font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.single-product .breadcrumbs.woo-breadcrumbs .breadcrumb-trail{
+	margin-bottom: 20px;
+}
+
+
+/* ==========================================================
+   WOOCOMMERCE – PRODUCT GRID (Astra)
+   - Product cards (shop/archive/product loops)
+   - Subcategory cards (category index)
+   ========================================================== */
+.woocommerce ul.products,
+.woocommerce-page ul.products{
+	margin-top:30px;
+}
+
+
+
+/* ==========================================================
+   PRODUCT CARDS (Shop / Archive / Loop)
+   ========================================================== */
+
+/* Card Wrapper (li.product) */
+
+.woocommerce ul.products li.product,
+.woocommerce-page ul.products li.product {
+  padding: 15px 15px 20px;
+  border: 1px solid var(--ast-global-color-5);
+  border-radius: 10px;
+  overflow: hidden;
+  justify-content:space-between;
+  box-shadow: 0 0 0 rgba(28, 21, 91, 0);
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+  /* Layout overrides */
+  width: 100% !important;
+  margin: 0 !important;
+  margin-bottom: 30px !important;
+}
+
+/* Hover: lift + shadow */
+
+.woocommerce ul.products li.product:hover,
+.woocommerce-page ul.products li.product:hover {
+  box-shadow: 0 5px 20px 5px rgba(28, 21, 91, 0.05);
+  transform: translateY(-3px);
+}
+
+
+/*---------- Start ------------- Product Image */
+
+.woocommerce ul.products li.product .astra-shop-thumbnail-wrap,
+.woocommerce ul.products li.product .astra-shop-thumbnail-wrap .et_shop_image {
+  position: relative;
+  display: inline-block;
+  border-radius: 6px; 
+  overflow: hidden;
+  margin-bottom: 10px;
+  text-align: center;
+  will-change: opacity, transform;
+}
+
+/* shimmer overlay */
+
+.woocommerce ul.products li.product .astra-shop-thumbnail-wrap::before,
+.woocommerce ul.products li.product .astra-shop-thumbnail-wrap .et_shop_image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  max-height: 300px;
+  background: linear-gradient(90deg, #f2f4f7 0%, #e9edf2 40%, #f2f4f7 80%);
+  background-size: 200% 100%;
+  animation: gph-shimmer 1.2s infinite linear;
+  border-radius: inherit; /* inherit from wrapper */
+  z-index: 10;
+  opacity: 1;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+  pointer-events: none;
+}
+
+/* product image */
+
+.woocommerce ul.products li.product .astra-shop-thumbnail-wrap .et_shop_image img {
+ 
+  display: block;
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+ 
+  margin-bottom: 0;
+  transform: scale(1);
+  opacity: 0;
+  transition: opacity 0.35s ease, transform 0.3s ease-in-out;
+  will-change: opacity, transform;
+}
+
+/* reveal shimmer and image on load */
+.woocommerce ul.products li.product.gph-img-loaded .astra-shop-thumbnail-wrap::before,
+.woocommerce ul.products li.product.gph-img-loaded .astra-shop-thumbnail-wrap .et_shop_image::before {
+  opacity: 0;
+  visibility: hidden;
+  animation: none;
+}
+
+.woocommerce ul.products li.product.gph-img-loaded .astra-shop-thumbnail-wrap .et_shop_image img {
+  opacity: 1 !important;
+}
+
+/* hover scale effect */
+.woocommerce ul.products li.product:hover .et_shop_image img {
+  transform: scale(1.03);
+}
+
+/* Accessibility: reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+
+  .woocommerce ul.products li.product .astra-shop-thumbnail-wrap::before,
+  .woocommerce ul.products li.product .astra-shop-thumbnail-wrap .et_shop_image::before,
+  .woocommerce ul.products li.product .astra-shop-thumbnail-wrap .et_shop_image img {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* shimmer keyframes */
+@keyframes gph-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/*---------- End ------------- Product Image */
+
+/* Product Content (summary wrapper) */
+
+.woocommerce ul.products li.product .astra-shop-summary-wrap,
+.woocommerce-page ul.products li.product .astra-shop-summary-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  position: static;
+  overflow: hidden;
+  
+}
+
+/* Category label */
+
+ul.products li.product .astra-shop-summary-wrap .ast-woo-product-category {
+  width: 100%;
+  font-size: 14px;
+}
+
+/* Product title link */
+
+ul.products li.product .astra-shop-summary-wrap .ast-loop-product__link {
+  width: 100%;
+  margin-bottom: 0px;
+  text-transform: uppercase;
+}
+ul.products li.product .astra-shop-summary-wrap .ast-loop-product__link h2{
+	color: var(--ast-global-color-2);
+	margin-bottom:0;
+	transition: color 0.3s ease-in-out;
+}
+ul.products li.product .astra-shop-summary-wrap .ast-loop-product__link:hover h2{
+	color: var(--ast-global-color-0);
+}
+ul.products li.product .astra-shop-summary-wrap .gph-loop-sku{
+	width: 100%;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.6);
+    border-bottom: 1px solid var(--ast-global-color-5);
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+}
+ul.products li.product .astra-shop-summary-wrap .gph-loop-sku span{
+	 font-weight: 600;
+}
+/* If SKU is disabled, keep the divider spacing by applying it to the title instead */
+.gph-loop-sku-off ul.products li.product .astra-shop-summary-wrap .ast-loop-product__link {
+  border-bottom: 1px solid var(--ast-global-color-5);
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+/* Product Meta: price + button */
+
+ul.products li.product .astra-shop-summary-wrap .price {
+  word-break: break-word;
+  flex: 1 0 0;
+  margin-bottom: 0;
+}
+
+ul.products li.product .astra-shop-summary-wrap .button,
+ul.products li.product .astra-shop-summary-wrap .button.product_type_external,
+ul.products li.product .astra-shop-summary-wrap .button.add_to_cart_button {
+ 
+  flex-grow:1;
+  max-width:145px;
+  padding: 12px 15px;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 16px;
+  margin: 0;
+  border-radius: 3px;
+}
+
+.woocommerce-js a.button.added::after{
+	margin-left:0 !important;
+    vertical-align: bottom;
+    margin-right: 3px;
+    order: -1;
+}
+
+/* Product Added to Cart Button */
+
+.woocommerce-js.single-product a.added_to_cart {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    text-align: center;
+    padding: 10px 15px;
+    border-radius: 5px;
+    line-height: 1.3;
+    text-transform: capitalize;
+    color: #fff;
+	background: var(--ast-global-color-1);
+	transition:all 0.3s ease-in-out;
+}
+.et-db #et-boc .et-l .et_pb_module .gph-video-products a.added_to_cart:hover,
+.woocommerce-js.single-product a.added_to_cart:hover{
+	background: var(--ast-global-color-6);
+}
+
+/* External product button full width */
+ul.products li.product .astra-shop-summary-wrap .button.product_type_external {
+  max-width: 100%;
+}
+
+/* Remove extra margins Astra/Woo adds */
+.woocommerce-js ul.products li.product .button,
+.woocommerce-page ul.products li.product .button {
+  margin-bottom: 0;
+}
+
+
+/* Responsive Grid Columns */
+@media (max-width: 1200px) {
+  .woocommerce-page ul.products {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 921px) {
+  .woocommerce-page ul.products {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .woocommerce ul.products li.product,
+  .woocommerce-page ul.products li.product {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 767px) {
+	.page-title{
+		text-align:center;
+	}
+	
+  .woocommerce-page ul.products {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+	
+	
+  .woocommerce ul.products li.product,
+  .woocommerce-page ul.products li.product {
+    text-align:center !important;
+  }
+  .woocommerce ul.products li.product .astra-shop-summary-wrap,
+  .woocommerce-page ul.products li.product .astra-shop-summary-wrap {
+	  flex-direction:column;
+  }
+  ul.products li.product .astra-shop-summary-wrap .price {
+	  margin-bottom:10px;
+  }
+}
+
+
+/* ========================================================== 
+  SUBCATEGORY CARDS
+========================================================== */
+
+/* 2.1 Make entire card a column layout */
+.woocommerce-js ul.products li.product.product-category>a,
+.woocommerce-page ul.products li.product.product-category>a {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* effect while loading */ 
+.woocommerce-js ul.products li.product.product-category a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-height: 290px;
+    background: linear-gradient(
+        90deg,
+        #f2f4f7 0%,
+        #e9edf2 40%,
+        #f2f4f7 80%
+    );
+    background-size: 200% 100%;
+    animation: gph-shimmer 1.2s infinite;
+    border-radius: 5px;
+    z-index: 10;
+    opacity: 1;
+    transition: opacity 0.4s ease; 
+    pointer-events: none; 
+}
+
+/* 2.2 Subcategory Image */
+ul.products li.product.product-category a>img {
+    width: 100%;
+    height: auto;
+    max-height: 290px !important;
+    aspect-ratio: 4 / 5;
+    object-fit: contain !important;
+    background: var(--ast-global-color-5);
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out, opacity 0.4s ease;
+    opacity: 0; /* Start at 0 so it can fade in nicely */
+    position: relative;
+    border-radius: 5px;
+}
+
+/* When image loads: hide shimmer, show image */
+.gph-img-loaded a::before {
+    opacity: 0 !important;
+    visibility: hidden;
+}
+
+.gph-img-loaded a img {
+    background: transparent !important;
+    opacity: 1 !important; 
+}
+
+
+ul.products li.product.product-category:hover a>img {
+    transform: scale(1.03);
+}
+
+@keyframes gph-shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* 2.3 Subcategory Title Area (h2) */
+ul.products li.product.product-category a .woocommerce-loop-category__title {
+    position: static !important;
+    background: #fff;
+    padding-inline: 10px;
+    padding-block: 5px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+ul.products li.product.product-category a .woocommerce-loop-category__title .gph-cat-title{
+	font-size: 16px;
+}
+
+/* Product count line  */
+ul.products li.product.product-category a .woocommerce-loop-category__title .count {
+    display: block;
+    width: 100%;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--ast-global-color-5);
+    opacity: 1;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+/* 2.4 "View Series" CTA  */
+ul.products li.product.product-category a .woocommerce-loop-category__title .gph-view-series {
+    display: inline-block;
+    padding-block: 5px;
+    position: relative;
+    font-size: 15px;
+    color: var(--ast-global-color-1);
+}
+
+/* Arrow decoration  */
+.product-category.product a .gph-view-series::after {
+    content: "»";
+    position: absolute;
+    top: 42%;
+    left: 100%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    margin-left: 2px;
+    opacity: 0.3;
+    transition: all 0.3s linear;
+}
+
+ul.products li.product.product-category:hover .gph-view-series::after {
+    margin-left: 8px;
+    opacity: 1;
+}
+
+/* ==========================================
+   CATEGORY HEADER "VIDEO/RESOURCE" SECTION
+   (term-description > .ct-container > .ct-box)
+   Premium responsive grid – no markup changes
+   ========================================== */
+
+/* Make the term-description area breathe */
+.woocommerce-products-header .term-description{
+  margin-top: 18px;
+  margin-bottom:60px;
+}
+
+/* Grid container */
+.woocommerce-products-header .term-description .ct-container{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Card */
+.woocommerce-products-header .term-description > p:has(img),
+.woocommerce-products-header .term-description > div:not(.ct-container),
+.woocommerce-products-header .term-description > div:not([class]), 
+.woocommerce-products-header .term-description .ct-box{
+  background: #fff;
+  border: 1px solid var(--ast-global-color-5);
+  border-radius: 10px;
+  padding: 16px;
+  overflow: hidden;
+  box-shadow: 0 0 0 rgba(28, 21, 91, 0);
+  transform: translateY(0);
+  max-width:550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+	
+}
+.woocommerce-products-header .term-description > p:has(img):hover,
+.woocommerce-products-header .term-description >  div:not([class]):hover,
+.woocommerce-products-header .term-description .ct-box:hover{
+  transform: translateY(-3px);
+  box-shadow: 0px 12px 30px rgba(28, 21, 91, 0.08);
+  border-color: rgba(28, 21, 91, 0.12);
+}
+
+/* Kill <br> */
+.woocommerce-products-header .term-description >  div:not([class]) br,
+.woocommerce-products-header .term-description .ct-box br{
+  display: none;
+}
+
+/* Title span (first span) */
+.woocommerce-products-header .term-description >  div:not([class]) > span,
+.woocommerce-products-header .term-description .ct-box > span{
+  display: block;
+  font-size: 18px !important;
+  line-height: 1.25 !important;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Subtitle span (nested span) */
+.woocommerce-products-header .term-description >  div:not([class]) > span > span,
+.woocommerce-products-header .term-description .ct-box > span > span{
+  display: block;
+  margin-top: 6px;
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* Link becomes a thumbnail block */
+.woocommerce-products-header .term-description p:has(img) a,
+.woocommerce-products-header .term-description >  div:not([class]) a,
+.woocommerce-products-header .term-description .ct-box a{
+    display: block;
+    margin-top: 12px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 250px;
+}
+
+/* Image: consistent + no CLS jump (you already have width/height attrs) */
+.woocommerce-products-header .term-description p:has(img) img,
+.woocommerce-products-header .term-description >  div:not([class]) a img,
+.woocommerce-products-header .term-description .ct-box a img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+	object-fit:cover;
+	aspect-ratio: 6/4;
+    transform: scale(1);
+    transition: transform .25s ease;
+}
+/* Videos in sub-category page */
+.term-description p:has(> iframe){
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
+	background: var(--ast-global-color-5);
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.term-description p:has(> iframe) > iframe{
+	border-radius: 5px;
+}
+
+/* Remove old float alignment from WP */
+
+.woocommerce-products-header .term-description >  div:not([class]) a img.alignleft,
+.woocommerce-products-header .term-description .ct-box a img.alignleft{
+  float: none !important;
+  margin: 0 !important;
+}
+
+/* Hover zoom */
+.woocommerce-products-header .term-description p:has(img):hover img,
+.woocommerce-products-header .term-description >  div:not([class]):hover a img,
+.woocommerce-products-header .term-description .ct-box:hover a img{
+  transform: scale(1.02);
+}
+
+/* Optional: subtle "play" cue (works even if it's not a video) */
+.woocommerce-products-header .term-description p:has(img) a::after,
+.woocommerce-products-header .term-description >  div:not([class]) a::after,
+.woocommerce-products-header .term-description .ct-box a::after{
+  content: "Watch Video →";
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--ast-global-color-1);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .2s ease, transform .2s ease;
+}
+.woocommerce-products-header .term-description p:has(img):hover a::after,
+.woocommerce-products-header .term-description >  div:not([class]):hover a::after,
+.woocommerce-products-header .term-description .ct-box:hover a::after{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 1200px){
+  .woocommerce-products-header .term-description .ct-container{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 768px) and (max-width: 921px) {
+	.slick-initialized .slick-slide {
+		padding-right: 20px;
+	}
+	.ast-article-single img {
+		box-shadow: none;
+		-webkit-box-shadow: none;
+	}
+}
+
+@media (max-width: 767px){
+  .woocommerce-products-header .term-description .ct-container{
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .woocommerce-products-header .term-description > div,
+  .woocommerce-products-header .term-description .ct-box{
+    padding: 14px;
+  }
+}
+
+/*==========================================
+ *  SINGLE PRODUCT PAGE 
+ *  Custom styles for WooCommerce product
+ *  tabs and attributes table
+ *==========================================*/
+
+/* Related Products section title: uppercase text */
+.related.products > h2{
+	text-transform:uppercase;
+}
+
+/* Tabs Panel: reduce inner padding on tab content area */
+ .woocommerce-js div.product .woocommerce-tabs .woocommerce-Tabs-panel--description.panel {
+    padding: 15px;
+	background:var(--ast-global-color-5);
+} 
+
+/* Videos in single product page */
+.woocommerce-product-details__short-description p iframe{
+	border-radius:5px;
+}
+
+/*==========================================
+ *          PRODUCT TABS (DESKTOP & MOBILE)
+ *==========================================*/
+
+/* Tabs list: remove extra gap below tab labels */
+.woocommerce-js div.product .woocommerce-tabs ul.tabs{
+	margin-bottom:0 !important;
+	display:flex;
+}
+
+/* Tabs list pseudo-element: remove default underline/line */
+.woocommerce-js div.product .woocommerce-tabs ul.tabs:before{
+	height:0;
+}
+
+/* Individual tab item: inline layout, background color, width */
+.woocommerce-js div.product .woocommerce-tabs ul.tabs li {
+    display:block;
+    background: transparent;
+	border:1px solid var(--ast-global-color-5);
+	border-bottom:0;
+    padding:0;
+	margin:0;
+	text-align:center;
+	min-width: 220px;
+	max-width:100%;
+}
+.woocommerce-js div.product .woocommerce-tabs ul.tabs li.active{
+	background: var(--ast-global-color-5);
+	border:0;
+	border-bottom:1px solid var(--ast-global-color-5);
+}
+
+/* Tab link: make full‑width clickable area with padding */
+.woocommerce-js div.product .woocommerce-tabs ul.tabs li a{
+	display:block;
+	width: 100%;
+	padding:10px;
+	border:0;
+}
+.woocommerce-js div.product .woocommerce-tabs ul.tabs li.active a{
+	border:0;
+}
+
+/* Active tab: thicker top/highlight bar */
+.woocommerce-js div.product .woocommerce-tabs ul.tabs li.active::before {
+	height:5px;
+}
+
+/*==========================================
+ *        ATTRIBUTES TABLE STYLING
+ *==========================================*/
+
+/* Attributes table: zebra striping for even rows */
+div.product table.woocommerce-product-attributes tbody tr:nth-child(even) {
+    background: var(--ast-global-color-4);
+}
+
+/* Attributes table: zebra striping for odd rows */
+div.product table.woocommerce-product-attributes tbody tr:nth-child(odd) {
+    background:var(--ast-global-color-5);
+}
+
+/* Attributes table: remove side borders, keep subtle bottom border */
+div.product table.woocommerce-product-attributes tr,
+div.product table.woocommerce-product-attributes  td,
+div.product table.woocommerce-product-attributes th {
+	border:0;
+	border-left:0;
+	border-left-width:0 !important;
+	border-top:0;
+	border-bottom:1px solid var(--ast-global-color-5);
+}
+
+/* Attribute label cells: slightly bolder text */
+.woocommerce-js div.product .woocommerce-tabs .shop_attributes th{
+	font-weight:600;
+}
+
+/* Attributes table: remove bottom border on last row */
+div.product table.woocommerce-product-attributes tbody tr:last-child td,
+div.product table.woocommerce-product-attributes tbody tr:last-child th{
+	border: 0;
+}
+
+/* Attribute value links: bold and no underline by default */
+div.product table.woocommerce-product-attributes tr td a{
+	text-decoration:none;
+	font-weight:600;
+}
+
+/* Attribute value links: underline on hover for clarity */
+div.product table.woocommerce-product-attributes tr td a:hover{
+	text-decoration:underline;
+}
+
+/*==========================================
+ *              RESPONSIVE TWEAKS
+ *==========================================*/
+@media (max-width: 767px){
+	.woocommerce-js div.product .woocommerce-tabs ul.tabs{
+		flex-direction:column;
+	}
+}
+
+/* Desktop+: ensure attribute label column has minimum width */
+@media (min-width: 922px){
+ .woocommerce-js div.product .woocommerce-tabs .shop_attributes th {
+    min-width:240px;
+ }
+}
+
+
+/* Product Informaation  */
+.single-product div.product .product_title{
+	text-transform:uppercase;
+	font-size:32px;
+}
+
+.single-product div.product p.price{
+	display:block;
+	font-size:42px;
+	margin-block:30px;
+}
+
+.single-product div.product .product_meta {
+    display: flex;
+    flex-direction: column;
+}
+.single-product div.product .product_meta .sku_wrapper .sku{
+	font-weight: 600;
+    color: var(--ast-global-color-1);
+}
+.single-product div.product .product_meta .posted_in{
+	display:none;
+}
+.single-product div.product .product_meta .posted_in a{
+	font-weight:600;
+}
+.single-product .breadcrumb-trail{
+	margin-bottom:30px;
+	font-size:15px;
+	font-weight:600;
+}
+
+
+/* Variation Reset Button */
+.woocommerce-js div.product form.cart .reset_variations {
+    padding: 7px 15px;
+    background: var(--ast-global-color-0);
+    margin-block: 10px;
+    border-radius: 3px;
+    color: #fff;
+	opacity:1;
+    transition: all 0.3s ease-in-out;
+}
+.woocommerce-js div.product form.cart .reset_variations:hover{
+	 background: var(--ast-global-color-1);
+}
+
+
+/* View Cart Button */
+
+.single-product .woocommerce-message{
+	display:flex;
+	justify-content:space-between;
+	align-items:flex-start;
+	gap:20px;
+	
+}
+.single-product .woocommerce-message::after{
+	display:none;
+}
+.single-product.woocommerce-page .woocommerce-message .button {
+    float: none;
+	width:120px !important;
+	flex-shrink:0;
+	text-align:center;
+}
+
+
+/* Pagination */
+.woocommerce .woocommerce-pagination ul.page-numbers, 
+.woocommerce-page .woocommerce-pagination ul.page-numbers {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.woocommerce .woocommerce-pagination ul.page-numbers li,
+.woocommerce-page .woocommerce-pagination ul.page-numbers li {
+    display: inline-block;
+    border-radius: 5px;
+	border-color: var(--ast-global-color-1);
+	background:transparent;
+	color: var(--ast-global-color-1);
+}
+.woocommerce nav.woocommerce-pagination ul li a.page-numbers:hover,
+.woocommerce nav.woocommerce-pagination ul li span.current {
+	background:var(--ast-global-color-1);
+	color: #fff;
+}
+
+
+.ast-woocommerce-container{
+	padding-bottom: 40px;
+}
+
+
+

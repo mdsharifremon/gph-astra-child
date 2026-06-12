@@ -1,0 +1,338 @@
+/*=========================================================
+ * 							CART PAGE
+ * =======================================================*/
+
+
+/* Outer Wrapper of the wp-block */
+.woocommerce-cart .entry-content > .wp-block-columns{
+	padding-top:0;
+	padding-bottom:0;
+	padding-left:0;
+	padding-right:0;
+}
+
+
+.woocommerce-cart .wp-block-column {
+    word-break:auto-phrase !important;
+}
+.woocommerce-cart header.entry-header h1.entry-title{
+	text-align:center;
+}
+/* Cart Layout Wrapper */
+.gph-cart-wrapper > .woocommerce{
+	display:flex;
+	flex-direction:column;
+	flex-wrap:wrap;
+	justify-content:center;
+	align-items:center;
+} 
+/* woocommerce-notices-wrapper */
+.gph-cart-wrapper .woocommerce-notices-wrapper{
+	width: 100%;
+} 
+
+
+/* Cart Empty Message */
+.gph-cart-wrapper .wc-empty-cart-message{
+	width: 100%;
+}
+
+.wc-empty-cart-message .woocommerce-info {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.woocommerce-cart .return-to-shop{
+	text-align:center;
+}
+
+.gph-cart-wrapper .return-to-shop{
+	width: 100%;
+	display: flex;
+    justify-content: center;
+}
+.gph-cart-wrapper .return-to-shop .button.wc-backward{
+	padding: 15px 30px;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+.gph-cart-wrapper .woocommerce-message,
+.gph-cart-wrapper .cart-empty.woocommerce-info {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+	text-align:center;
+}
+.gph-cart-wrapper .woocommerce-message::before,
+.cart-empty.woocommerce-info::before{
+	position:relative;
+	top:inherit;
+	left:inherit;
+}
+/* Cart Items wrapper form*/
+
+ .gph-cart-wrapper .woocommerce-cart-form{
+	width: 100%; */
+}
+
+/* Cart Totals */
+.gph-cart-wrapper .cart-collaterals{
+	width:100%;
+}
+.gph-cart-wrapper .cart-collaterals .cart_totals, 
+.woocommerce-page .gph-cart-wrapper .cart-collaterals .cart_totals {
+	width:100%;
+	float:none;
+}
+
+.gph-cart-wrapper .cart-collaterals .cart_totals > h2{
+	text-transform:uppercase;
+	font-size: 24px;
+}
+
+/* =====================================================
+ * Cart Totals – Shipping Notice Card
+ * ===================================================== */
+
+.cart_totals .gph-cart-shipping-notice{
+	background: var(--ast-global-color-5);
+	border-radius: 3px;
+	padding: 20px;
+	margin: 20px 0;
+	text-align:left;
+}
+
+/* Title */
+.cart_totals .gph-cart-shipping-notice__title{
+	margin: 0 0 16px;
+	text-transform: uppercase;
+	font-weight: 700;
+	line-height: 1.2;
+	letter-spacing: 0.02em;
+	padding-inline:0;
+	padding-block:0;
+	font-size: clamp(18px, 1.2vw, 20px);
+}
+
+/* Description */
+.cart_totals .gph-cart-shipping-notice__description{
+	margin: 0 auto;
+	line-height: 1.5;
+	font-size: 14px;
+	color: var(--ast-global-color-3);
+}
+
+@media (max-width: 768px){
+	.cart_totals .gph-cart-shipping-notice{
+		text-align:center;
+	}
+}
+
+
+@media (min-width: 1200px){
+	.gph-cart-wrapper > .woocommerce{
+		display:flex;
+		flex-wrap:wrap;
+		flex-direction:row;
+		justify-content:space-between;
+		align-items:stretch;
+	}
+	
+	.gph-cart-wrapper .woocommerce-cart-form{
+		width: 64%;
+	}
+	.gph-cart-wrapper .cart-collaterals{
+		width: 34%;
+	}
+
+}
+
+
+/*=========================================================
+ *  CHECKOUT PAGE
+ *  Styles for billing fields, order review table, 
+ *  payment button, and confirmation (thank you) page
+ *=======================================================*/
+
+
+/* Modal For Shipping Message */
+.gph-modal-overlay{
+	display:none;
+	position:fixed;
+	inset:0;
+	background:rgba(0,0,0,.55);
+	z-index:999999;
+	justify-content:center;
+	align-items:center;
+	padding:20px;
+}
+.gph-modal{
+	background:#fff;
+	max-width:700px;
+	width:100%;
+	border:2px solid #eee;
+	border-radius:4px;
+	padding:30px 30px;
+	position:relative;
+}
+.gph-modal-close{
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    border: 0;
+    font-size: 28px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    padding: 0;
+    margin: 0;
+    color: red;
+	transition: color 200ms ease-in-out;
+}
+.gph-modal-close:hover{
+	background: #fff;
+	color: var(--ast-global-color-0);
+}
+.gph-modal-body{
+	margin-top:10px;
+}
+
+/* Section Headings: uppercase for billing and order review */
+.woocommerce-billing-fields > h3,
+h3#order_review_heading {
+	text-transform:uppercase;
+}
+
+/* Order Review: set product name font size */
+.woocommerce-page.woocommerce-checkout form #order_review td.product-name {
+	font-size: 16px;
+}
+
+/* Shop Table: bold prices and row labels */
+.woocommerce-page.woocommerce-checkout table.shop_table .woocommerce-Price-amount,
+.woocommerce-page.woocommerce-checkout table.shop_table .cart-subtotal th,
+.woocommerce-page.woocommerce-checkout table.shop_table .order-total th {
+	font-weight:600;
+}
+
+/* Place Order Button: custom padding, shape, and brand colors */
+.woocommerce #payment #place_order {
+	padding:15px 30px;
+	text-transform:uppercase;
+	border-radius:8px;
+	margin-top:20px;
+	background: var(--ast-global-color-0);
+}
+
+/* Place Order Button: hover state using Astra global color 6 */
+.woocommerce #payment #place_order:hover {
+	background: var(--ast-global-color-7);
+}
+
+/* Shipping Toggle: style "Ship to a different address" label */
+h3#ship-to-different-address label.woocommerce-form__label span {
+	font-size: 16px;
+	font-weight:600;
+	text-transform: uppercase;
+}
+
+/*=========================================================
+ *                  CONFIRMATION PAGE
+ *=======================================================*/
+
+/* Order Details Titles: uppercase for column and section headers */
+.woocommerce-page.woocommerce-checkout .woocommerce-order h2.woocommerce-column__title,
+.woocommerce-page.woocommerce-checkout .woocommerce-order h2.woocommerce-order-details__title {
+	text-transform:uppercase;
+}
+
+/* Thank You Message: centered text with responsive font size and underline */
+.woocommerce-page.woocommerce-checkout .woocommerce-order .woocommerce-thankyou-order-received {
+    text-align: center;
+    margin-top: -20px;
+    margin-bottom: 50px;
+    font-weight: 600;
+    font-size: clamp(18px, 1.5vw, 24px);
+    position: relative;
+}
+
+/* Thank You Message Underline: decorative border below text */
+/* .woocommerce-page.woocommerce-checkout .woocommerce-order .woocommerce-thankyou-order-received::after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    margin-inline: auto;
+    border-bottom: 2px solid var(--ast-global-color-5);
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+} */
+
+/* Order Summary List: horizontal flex layout for desktop */
+.woocommerce-page.woocommerce-checkout .woocommerce-order ul.order_details,
+.woocommerce.woocommerce-checkout .woocommerce-order ul.order_details {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 0;
+}
+
+/* Order Summary Items: vertical divider and bold labels */
+.woocommerce-checkout.woocommerce-js ul.order_details li {
+	border-right: 1px dashed var(--ast-global-color-5);
+	font-size: 16px;
+	font-weight: 600;
+}
+
+/* Order Summary Values: reset bold and uppercase for the actual data */
+.woocommerce-checkout.woocommerce-js ul.order_details li strong {
+	font-size: 16px;
+    text-transform: none;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+/*=========================================================
+ *                  MOBILE RESPONSIVENESS
+ *=======================================================*/
+
+@media (max-width: 921px) {
+	/* Order Summary: stack items vertically on mobile */
+	.woocommerce-page.woocommerce-checkout .woocommerce-order ul.order_details,
+	.woocommerce.woocommerce-checkout .woocommerce-order ul.order_details {
+		flex-direction:column;
+	}
+	
+	/* Order Summary Items: switch from side border to bottom border */
+	.woocommerce-checkout.woocommerce-js ul.order_details li {
+		padding-block:10px !important;
+		padding-inline:10px !important;
+		border-right:0;
+		margin-right:0;
+		border-bottom: 1px dashed var(--ast-global-color-5);
+		display: flex;
+        align-items: center;
+        gap: 5px;
+	}
+}
+
+
+
+/* Shipping Address In cart Page */
+
+.woocommerce-shipping-destination{
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+.woocommerce-shipping-destination strong{
+	opacity: 0.7;
+}

@@ -1,0 +1,611 @@
+/* 
+* File: Search Page 
+* Astra Child Theme
+* Last Updated: 14.01.2026
+*/
+
+
+/* =====================================================
+ * SEARCH RESULTS – Card Layout (Astra)
+ * ===================================================== */
+
+/* Page Title */
+.search h1.page-title.ast-archive-title {
+  text-transform: uppercase;
+}
+
+/* =====================================================
+ * Grid Layout
+ * ===================================================== */
+.search .ast-row,
+.search .et_builder_outer_content
+.search .ast-blog-layout-4-grid .ast-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px;
+}
+
+/* If Divi wrapper exists, kill the grid to prevent broken layout */
+.search .ast-row:has(> .et-boc),
+.search .ast-row:has(> .et_builder_outer_content),
+.search .ast-blog-layout-4-grid .ast-row:has(> .et-boc),
+.search .ast-blog-layout-4-grid .ast-row:has(> .et_builder_outer_content) {
+  display: block;
+}
+.search .ast-row:has(> .et-boc) .et_builder_outer_content,
+.search .ast-row:has(> .et_builder_outer_content) .et_builder_outer_content,
+.search .ast-blog-layout-4-grid .ast-row:has(> .et-boc) .et_builder_outer_content,
+.search .ast-blog-layout-4-grid .ast-row:has(> .et_builder_outer_content) .et_builder_outer_content {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px;
+}
+/* =====================================================
+ * Card Shell
+ * ===================================================== */
+.search .ast-row article,
+.search .ast-blog-layout-4-grid .ast-article-post {
+  width: 100% !important;
+  margin: 0;
+  padding: 16px 16px 18px;
+  border: 1px solid #e9e9ee;
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.search .ast-row article:hover,
+.search .ast-blog-layout-4-grid .ast-article-post:hover {
+  transform: translateY(-2px);
+  border-color: #dedee6;
+  box-shadow: 0 10px 26px rgba(28, 21, 91, 0.08);
+}
+
+/* Remove Astra inner shadow/padding */
+.search .ast-blog-layout-4-grid .ast-article-inner {
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Make the content stack and keep CTA at bottom */
+.search .post-content.ast-grid-common-col {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+/* Remove featured image padding/margins (Astra layout specific) */
+.search
+  .ast-article-post.remove-featured-img-padding
+  .blog-layout-4
+  .post-content
+  .ast-blog-featured-section
+  .post-thumb-img-content {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+}
+
+/* =====================================================
+ * Media / Thumbnail
+ * ===================================================== */
+
+/* Media spacing */
+.search .ast-blog-featured-section.post-thumb {
+  margin: 0 0 12px;
+}
+
+/* Thumbnail container */
+.search .post-thumb-img-content.post-thumb {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Fixed image area so all cards align */
+.search .post-thumb-img-content.post-thumb a {
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.search .post-thumb-img-content.post-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* =====================================================
+ * Title / Meta / Excerpt
+ * ===================================================== */
+
+/* Title wrapper */
+.search article .post-content .entry-title {
+  margin-block: 12px !important;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--ast-global-color-5);
+}
+
+/* Title link */
+.search article .post-content .entry-title a {
+  line-height: 1.25;
+  text-transform: uppercase;
+  color: var(--ast-global-color-6);
+  text-align: center;
+  font-weight: 700;
+  transition: color 0.3s ease-in-out;
+}
+
+/* Title hover */
+.search article .post-content .entry-title:hover a {
+  color: var(--ast-global-color-1);
+}
+
+/* Clamp title to 2 lines */
+.search .entry-title a {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Entry header spacing */
+.search article .entry-header {
+  margin-bottom: 0;
+  display:none; /* Hide Meta Data */
+}
+
+/* Meta */
+.search .entry-meta {
+  font-size: 12px;
+  opacity: 0.75;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+/* Excerpt (clamped for consistent card height) */
+.search .ast-excerpt-container p {
+  margin: 0;
+  font-size: 14px;
+  text-align: center;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* =====================================================
+ * CTA Footer
+ * ===================================================== */
+
+/* Push CTA area to the bottom of the card */
+.search .entry-content.clear {
+  margin-top: auto;
+}
+
+.search .gph-card-footer {
+  margin-top: 12px;
+}
+
+/* Full width solid CTA */
+.search .gph-card-footer a,
+.search .gph-card-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  border: 0;
+  transition: background 0.3s ease-in-out;
+}
+
+/* CTA default */
+.search .gph-card-footer a {
+  background: var(--ast-global-color-0, #1e5bff);
+  color: #fff;
+  /* box-shadow: 0 8px 18px rgba(30, 91, 255, 0.22); */
+}
+
+/* CTA hover */
+.search .gph-card-footer a:hover {
+  background: var(--ast-global-color-1, #1e5bff);
+}
+
+/* =====================================================
+ * Responsive Breakpoints
+ * ===================================================== */
+@media (max-width: 1200px) {
+  .search .ast-row,
+  .search .ast-blog-layout-4-grid .ast-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+/* If Divi wrapper exists, kill the grid to prevent broken layout */
+.search .ast-row:has(> .et-boc) .et_builder_outer_content,
+.search .ast-row:has(> .et_builder_outer_content) .et_builder_outer_content,
+.search .ast-blog-layout-4-grid .ast-row:has(> .et-boc) .et_builder_outer_content,
+.search .ast-blog-layout-4-grid .ast-row:has(> .et_builder_outer_content) .et_builder_outer_content {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+ }
+}
+
+@media (max-width: 921px) {
+  .search .ast-row,
+  .search .ast-blog-layout-4-grid .ast-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+	/* If Divi wrapper exists, kill the grid to prevent broken layout */
+.search .ast-row:has(> .et-boc) .et_builder_outer_content,
+.search .ast-row:has(> .et_builder_outer_content) .et_builder_outer_content,
+.search .ast-blog-layout-4-grid .ast-row:has(> .et-boc) .et_builder_outer_content,
+.search .ast-blog-layout-4-grid .ast-row:has(> .et_builder_outer_content) .et_builder_outer_content {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+ }
+}
+
+@media (max-width: 767px) {
+  .search .ast-row,
+  .search .ast-blog-layout-4-grid .ast-row {
+    grid-template-columns: 1fr;
+  }
+	/* If Divi wrapper exists, kill the grid to prevent broken layout */
+.search .ast-row:has(> .et-boc) .et_builder_outer_content,
+.search .ast-row:has(> .et_builder_outer_content) .et_builder_outer_content,
+.search .ast-blog-layout-4-grid .ast-row:has(> .et-boc) .et_builder_outer_content,
+.search .ast-blog-layout-4-grid .ast-row:has(> .et_builder_outer_content) .et_builder_outer_content {
+  grid-template-columns:  1fr;
+
+ }
+}
+
+
+/* =====================================================
+ * NO RESULTS PAGE – Professional Design
+ * ===================================================== */
+
+.gph-no-results {
+  max-width: 700px;
+  margin: 60px auto 80px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* Icon */
+.gph-no-results__icon {
+  font-size: 60px;
+  margin-bottom: 20px;
+  opacity: 0.3;
+}
+
+/* Title */
+.gph-no-results__title {
+  font-size: 26px;
+  font-weight: 400;
+  color: #333;
+  margin-bottom: 30px;
+  line-height: 1.4;
+}
+
+.gph-no-results__title strong {
+  font-weight: 600;
+  color: #000;
+}
+
+/* Tips Section */
+.gph-no-results__tips {
+  margin-bottom: 40px;
+  padding: 24px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  border: 1px solid #e9e9ee;
+}
+
+.gph-no-results__tips p {
+  font-size: 16px;
+  color: #666;
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+/* Tooltip */
+.gph-tooltip {
+  position: relative;
+  display: inline-block;
+  margin-left: 4px;
+}
+
+.gph-tooltip__icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  border-radius: 50%;
+  background: #0073aa;
+  color: #fff;
+  font-size: 12px;
+  cursor: help;
+  vertical-align: middle;
+}
+
+.gph-tooltip__text {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  white-space: nowrap;
+  z-index: 999;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.gph-tooltip__text::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #333;
+}
+
+.gph-tooltip:hover .gph-tooltip__text,
+.gph-tooltip__icon:focus + .gph-tooltip__text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Search Box */
+.gph-no-results__search {
+  margin: 40px 0;
+}
+
+.gph-no-results__search .search-form {
+  display: flex;
+  max-width: 550px;
+  margin: 0 auto;
+  gap: 10px;
+}
+
+.gph-no-results__search input[type="search"] {
+  flex: 1;
+  padding: 14px 18px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
+}
+
+.gph-no-results__search input[type="search"]:focus {
+  outline: none;
+  border-color: #0073aa;
+}
+
+.gph-no-results__search button[type="submit"] {
+  padding: 14px 36px;
+  background: var(--ast-global-color-0, #c8102e);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.gph-no-results__search button[type="submit"]:hover {
+  background: var(--ast-global-color-1, #a00d25);
+  transform: translateY(-1px);
+}
+
+/* Help Section */
+.gph-no-results__help {
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid #e9e9ee;
+}
+
+.gph-no-results__help h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 24px;
+}
+
+.gph-help-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.gph-help-option {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s ease;
+  padding: 12px 20px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.gph-help-option:hover {
+  color: #0073aa;
+  background: #f9f9f9;
+  border-color: #e9e9ee;
+}
+
+.gph-help-option strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  text-decoration: underline;
+}
+
+.gph-help-option span {
+  display: block;
+  font-size: 14px;
+  color: #666;
+}
+
+.gph-help-separator {
+  font-size: 24px;
+  color: #ddd;
+  user-select: none;
+}
+
+/* Popular Categories Section */
+.gph-no-results__categories {
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid #e9e9ee;
+}
+
+.gph-no-results__categories h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 32px;
+}
+
+.gph-category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.gph-category-card {
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #e9e9ee;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background: #fff;
+}
+
+.gph-category-card:hover {
+  border-color: #dedee6;
+  box-shadow: 0 10px 26px rgba(28, 21, 91, 0.08);
+  transform: translateY(-2px);
+}
+
+.gph-category-card__image {
+  margin-bottom: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f9f9f9;
+}
+
+.gph-category-card__image img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  display: block;
+}
+
+.gph-category-card__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 8px;
+  transition: color 0.3s ease;
+}
+
+.gph-category-card:hover .gph-category-card__title {
+  color: #0073aa;
+}
+
+.gph-category-card__count {
+  font-size: 13px;
+  color: #999;
+}
+
+/* =====================================================
+ * Responsive
+ * ===================================================== */
+
+@media (max-width: 921px) {
+  .gph-category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .gph-no-results {
+    margin: 40px auto 60px;
+    padding: 20px;
+  }
+
+  .gph-no-results__title {
+    font-size: 22px;
+  }
+
+  .gph-no-results__search .search-form {
+    flex-direction: column;
+  }
+
+  .gph-no-results__search button[type="submit"] {
+    width: 100%;
+  }
+
+  .gph-help-options {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .gph-help-separator {
+    display: none;
+  }
+
+  .gph-category-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .gph-tooltip__text {
+    white-space: normal;
+    max-width: 200px;
+  }
+}
+
+
+
+/* ─── Search results page: enforce normal container regardless of Divi ── */
+body.search-results .ast-container,
+body.search-results .ast-container:has(#et-boc) {
+  max-width: var(--ast-content-width, 1240px) !important;
+  width: 100% !important;
+  margin-inline: auto !important;
+
+}
+
+body.search-results .entry-content,
+body.search-results .entry-content:has(#et-boc),
+body.search-results #et-boc {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding-inline: 0 !important;
+  overflow: hidden !important;
+}
+
+
+body.search-results.ast-page-builder-template .site .site-content #primary{
+	padding-bottom:60px;
+}

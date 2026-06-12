@@ -1,0 +1,104 @@
+/* ===========================
+   1. @font-face declarations
+   =========================== */
+
+/* BODY FONT: Open Sans (local) */
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/OpenSans-Regular.woff2') format('woff2'),
+       url('../fonts/OpenSans-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/OpenSans-Italic.woff2') format('woff2'),
+       url('../fonts/OpenSans-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/OpenSans-SemiBold.woff2') format('woff2'),
+       url('../fonts/OpenSans-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* HEADING / MENU FONT: Meltix (local) */
+@font-face {
+  font-family: 'meltix';
+  src: url('../fonts/meltix.regular-webfont.woff2') format('woff2'),
+       url('../fonts/meltix.regular-webfont.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'meltix';
+  src: url('../fonts/meltix.bold-webfont.woff2') format('woff2'),
+       url('../fonts/meltix.bold-webfont.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'meltix';
+  src: url('../fonts/meltix.italic-webfont.woff2') format('woff2'),
+       url('../fonts/meltix.italic-webfont.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* OPTIONAL ACCENT FONT: Lato Bold */
+@font-face {
+  font-family: 'lato';
+  src: url('../fonts/Lato-Bold.woff2') format('woff2'),
+       url('../fonts/Lato-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===========================
+   2. Global assignments
+   =========================== */
+
+/* Font variables */
+:root{
+  --font-primary: 'OpenSans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-secondary: 'meltix', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-accent: 'lato', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Body text everywhere */
+body,
+input,
+select,
+textarea {
+  font-family: var(--font-primary);
+}
+
+/* Headings + menus */
+h1, h2, h3, h4, h5, h6,
+.main-header-menu > li > a,
+.main-header-menu .menu-link,
+.ast-mobile-popup-drawer .ast-mobile-popup-inner .main-header-menu a {
+  font-family: var(--font-secondary);
+}
+
+/* Accent text (use intentionally) */
+.gph-accent-text {
+  font-family: var(--font-accent);
+}
+
+
+
