@@ -68,6 +68,31 @@ function gph_add_font_display_swap_overrides()
 add_action('wp_head', 'gph_add_font_display_swap_overrides', 999);
 
 /**
+ * GPH: Prioritize header logo image.
+ *
+ * The site logo is above the fold, so it should not be lazy-loaded.
+ * This improves logo-related CLS/LCP behavior.
+ */
+add_filter('wp_get_attachment_image_attributes', function ($attr, $attachment, $size) {
+
+    if (!empty($attr['class']) && strpos($attr['class'], 'custom-logo') !== false) {
+        unset($attr['loading']);
+
+        $attr['loading']       = 'eager';
+        $attr['fetchpriority'] = 'high';
+        $attr['decoding']      = 'sync';
+
+        // Keep intrinsic image dimensions stable.
+        $attr['width']  = '420';
+        $attr['height'] = '52';
+    }
+
+    return $attr;
+
+}, 20, 3);
+
+
+/**
  * Check whether current page is one of the known static marketing pages
  * where WooCommerce frontend interaction assets are normally not needed.
  *
