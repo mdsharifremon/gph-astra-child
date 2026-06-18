@@ -1,7 +1,7 @@
 /**
 Theme Name: Astra Child
-Author: Sharif Uddin
-Author URI: mailto:sharifwds@gmail.com
+Author: Brainstorm Force
+Author URI: http://wpastra.com/about/
 Description: Astra is the fastest, fully customizable & beautiful theme suitable for blogs, personal portfolios and business websites. It is very lightweight (less than 50KB on frontend) and offers unparalleled speed. Built with SEO in mind, Astra comes with schema.org code integrated so search engines will love your site. Astra offers plenty of sidebar options and widget areas giving you a full control for customizations. Furthermore, we have included special features and templates so feel free to choose any of your favorite page builder plugin to create pages flexibly. Some of the other features: # WooCommerce Ready # Responsive # Compatible with major plugins # Translation Ready # Extendible with premium addons # Regularly updated # Designed, Developed, Maintained & Supported by Brainstorm Force. Looking for a perfect base theme? Look no further. Astra is fast, fully customizable and beautiful theme!
 Version: 1.0.0
 License: GNU General Public License v2 or later
@@ -229,24 +229,24 @@ button, .button{
    4) DESKTOP LARGE: 1201px–1400px
    - Logo sizing
    ====================================================================== */
-@media (min-width: 1201px) and (max-width: 1400px) {
+  /* @media (min-width: 1201px) and (max-width: 1400px) {
 
-  .site-branding .site-logo-img img {
-    max-width: 420px;
+    .site-branding .site-logo-img img {
+      max-width: 420px;
+    }
   }
-}
 
-@media (max-width: 767px) { 
-	header .custom-logo-link img {
-  		max-width: 350px;
-	}
-}
+  @media (max-width: 767px) { 
+    header .custom-logo-link img {
+        max-width: 350px;
+    }
+  }
 
-@media (max-width: 529px) { 
-	header .custom-logo-link img {
-  		max-width: 280px;
-	}
-}
+  @media (max-width: 529px) { 
+    header .custom-logo-link img {
+        max-width: 280px;
+    }
+  } */
 
 
 /* ======================================================================
@@ -440,10 +440,6 @@ li.mega-menu-item > a.mega-menu-link {
     padding: 0;
   }
 
-  /* Logo size for medium desktops */
-  .site-branding .site-logo-img img {
-    max-width: 420px;
-  }
 
 
 
@@ -455,14 +451,55 @@ li.mega-menu-item > a.mega-menu-link {
    4) DESKTOP LARGE: 1201px–1400px
    - Logo sizing
    ====================================================================== */
-@media (min-width: 1201px) and (max-width: 1400px) {
+/* =====================================================
+   GPH Header Logo CLS Stabilization
+   ===================================================== */
 
-  .site-branding .site-logo-img img {
-    max-width: 420px;
+.site-header .custom-logo-link {
+  display: inline-block;
+  line-height: 0;
+}
+
+.site-header .custom-logo-link img.custom-logo,
+.site-header .site-logo-img img.custom-logo {
+  display: block;
+  width: 420px;
+  max-width: 420px;
+  height: auto;
+  aspect-ratio: 420 / 52;
+  transition: none !important;
+}
+
+/* Tablet / Astra breakpoint */
+@media (max-width: 921px) {
+  .site-header .custom-logo-link img.custom-logo,
+  .site-header .site-logo-img img.custom-logo {
+    width: 300px;
+    max-width: 300px;
   }
 }
 
-@media (max-width: 767px) { 
+/* Mobile */
+@media (max-width: 544px) {
+  .site-header .custom-logo-link img.custom-logo,
+  .site-header .site-logo-img img.custom-logo {
+    width: 180px;
+    max-width: 180px;
+  }
+}
+
+@media (min-width: 1201px) and (max-width: 1400px) {
+
+.site-branding .site-logo-img img {
+  width: 420px;
+  max-width: 420px;
+  height: auto;
+  aspect-ratio: 420 / 52;
+  transition: none !important;
+ }
+}
+
+/* @media (max-width: 767px) { 
 	header .custom-logo-link img {
   		max-width: 350px;
 	}
@@ -472,7 +509,10 @@ li.mega-menu-item > a.mega-menu-link {
 	header .custom-logo-link img {
   		max-width: 280px;
 	}
-}
+} */
+
+
+
 
 
 
@@ -1883,4 +1923,103 @@ body.gph-howto .entry-content ul.wp-block-page-list ul {
         border:0;
         border-color: transparent;
     }
+}
+
+/* Mobile Slider - preserve full banner, remove Divi wrapper gap */
+@media (max-width: 767px) {
+	.et-db #et-boc .et-l .mobile-slider,
+	.et-db #et-boc .et-l .mobile-slider .et_pb_slider,
+	.et-db #et-boc .et-l .mobile-slider .et_pb_slides,
+	.et-db #et-boc .et-l .mobile-slider .et_pb_slide,
+	.et-db #et-boc .et-l .mobile-slider .et_pb_container,
+	.et-db #et-boc .et-l .mobile-slider .et_pb_slider_container_inner,
+	.et-db #et-boc .et-l .mobile-slider .et_pb_slide_image {
+		height: auto !important;
+		min-height: 0 !important;
+		max-height: none !important;
+		padding: 0 !important;
+		margin: 0 !important;
+	}
+
+	.et-db #et-boc .et-l .mobile-slider .et_pb_slide {
+		width: 100% !important;
+		background-image: none !important;
+		background-size: auto !important;
+		background-position: center !important;
+		background-repeat: no-repeat !important;
+	}
+
+	.et-db #et-boc .et-l .mobile-slider .et_pb_container {
+		width: 100% !important;
+		max-width: 100% !important;
+	}
+
+	.et-db #et-boc .et-l .mobile-slider .et_pb_slide_image {
+		display: block !important;
+		position: static !important;
+		float: none !important;
+		width: 100% !important;
+		max-width: 100% !important;
+		text-align: center !important;
+	}
+
+	.et-db #et-boc .et-l .mobile-slider .et_pb_slide_image img {
+		display: block !important;
+		position: static !important;
+		width: 100% !important;
+		max-width: 100% !important;
+		height: auto !important;
+		max-height: none !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		object-fit: contain !important;
+		object-position: center !important;
+	}
+
+	.et-db #et-boc .et-l .mobile-slider .et_pb_slide_description {
+		display: none !important;
+		visibility: hidden !important;
+		height: 0 !important;
+		min-height: 0 !important;
+		max-height: 0 !important;
+		padding: 0 !important;
+		margin: 0 !important;
+		overflow: hidden !important;
+	}
+
+	.et-db #et-boc .et-l .mobile-slider .et-pb-slider-arrows,
+	.et-db #et-boc .et-l .mobile-slider .et-pb-controllers {
+		position: absolute !important;
+	}
+}
+
+
+
+@media only screen and (max-width: 767px) {
+  body.home .gph-slider {
+    width: 100%;
+    aspect-ratio: 478 / 151;
+    min-height: 151px;
+    max-height: 180px;
+    overflow: hidden;
+  }
+
+  body.home .gph-slider .et_pb_slides,
+  body.home .gph-slider .et_pb_slide {
+    height: 100%;
+    min-height: 151px;
+  }
+
+  body.home .gph-slider .et_pb_container,
+  body.home .gph-slider .et_pb_slide_description {
+    height: 100%;
+    min-height: 151px;
+    padding: 0;
+  }
+
+  body.home .gph-slider .et_pb_slide {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
 }
