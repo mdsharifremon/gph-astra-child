@@ -2,17 +2,13 @@
  * Gas Pump Heaven - Homepage Hero Slider
  * Enqueued on the front page only.
  *
- * Stage 2: arrows + dots. Autoplay still not added — say when you want it.
- *
- * Structure:
- *   #gph-hero-slider-wrapper  -> outer section (CSS ID set in Divi builder)
- *     .gph-arrow-prev / .gph-arrow-next  -> real buttons, already in your HTML
- *     #gph-slider-dots                   -> empty mount, dots generated here
- *     .et_pb_fullwidth_image             -> one per slide (dynamic count)
+ * Stage 3: arrows + dots + autoplay.
  */
 
 (() => {
   'use strict';
+
+  const AUTOPLAY_MS = 5000;
 
   const init = () => {
     const wrapper = document.getElementById('gph-hero-slider-wrapper');
@@ -21,13 +17,12 @@
     const slides = Array.prototype.slice.call(
       wrapper.querySelectorAll('.et_pb_fullwidth_image')
     );
-    if (slides.length < 2) return; // nothing to slide
+    if (slides.length < 2) return;
 
     const prevBtn = wrapper.querySelector('.gph-arrow-prev');
     const nextBtn = wrapper.querySelector('.gph-arrow-next');
     if (!prevBtn || !nextBtn) return;
 
-    // Dots are optional — if the mount is missing, arrows still work.
     const dotsMount = wrapper.querySelector('#gph-slider-dots');
     const dots = dotsMount
       ? slides.map((_, i) => {
@@ -41,6 +36,7 @@
       : [];
 
     let current = 0;
+    let timer = null;
 
     const goTo = (index) => {
       const next = (index + slides.length) % slides.length;
@@ -56,15 +52,34 @@
       current = next;
     };
 
-    prevBtn.addEventListener('click', () => goTo(current - 1));
-    nextBtn.addEventListener('click', () => goTo(current + 1));
+    const goNext = () => goTo(current + 1);
+    const goPrev = () => goTo(current - 1);
 
+    const play = () => {
+      stop();
+      timer = setInterval(goNext, AUTOPLAY_MS);
+    };
+    const stop = () => {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    };
+
+    prevBtn.addEventListener('click', () => { goPrev(); play(); });
+    nextBtn.addEventListener('click', () => { goNext(); play(); });
     dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => goTo(i));
+      dot.addEventListener('click', () => { goTo(i); play(); });
     });
 
-    wrapper.classList.add('gph-js-ready'); // turns off the CSS no-JS fallback
-    goTo(0); // show slide 1, dot 1
+    wrapper.addEventListener('mouseenter', stop);
+    wrapper.addEventListener('mouseleave', play);
+    wrapper.addEventListener('focusin', stop);
+    wrapper.addEventListener('focusout', play);
+
+    wrapper.classList.add('gph-js-ready');
+    goTo(0);
+    play();
   };
 
   if (document.readyState === 'loading') {

@@ -2182,6 +2182,9 @@ body.gph-howto .entry-content ul.wp-block-page-list ul {
   pointer-events: none !important;
   z-index: 1 !important;
 }
+#gph-hero-slider-wrapper .et_pb_fullwidth_image {
+  will-change: opacity;
+}
 
 #gph-hero-slider-wrapper .et_pb_fullwidth_image img {
   width: 100% !important;
@@ -2189,6 +2192,7 @@ body.gph-howto .entry-content ul.wp-block-page-list ul {
   display: block !important;
   object-fit: cover !important;
 }
+
 
 #gph-hero-slider-wrapper .et_pb_fullwidth_image.is-active {
   opacity: 1 !important;
@@ -2276,7 +2280,7 @@ body.gph-howto .entry-content ul.wp-block-page-list ul {
 
 @media (max-width: 767px) {
   .gph-arrow { width: 36px; height: 36px; }
-  .gph-arrow::before { font-size: 24px; }
+  .gph-arrow::before { font-size: 40px; }
  
   #gph-hero-slider-wrapper:hover .gph-arrow-prev { left: 15px;} 
   #gph-hero-slider-wrapper:hover .gph-arrow-next { right: 15px;} 
@@ -2340,7 +2344,42 @@ body.gph-howto .entry-content ul.wp-block-page-list ul {
     height: 9px;
   }
 }
+@media (hover: none) {
+  .gph-arrow-prev,
+  .gph-arrow-next {
+    opacity: 0.6;
+    left: 15px;
+  }
+  .gph-arrow-next {
+    left: auto;
+    right: 15px;
+  }
+}
 
-#gph-hero-slider-wrapper .et_pb_fullwidth_image {
-  will-change: opacity;
+
+/* =====================================================
+   05.1a Slider — Divi Visual Builder edit-mode override
+   Slides render as normal stacked images while editing,
+   so every slide is directly clickable on canvas.
+   ===================================================== */
+
+body.et-fb #gph-hero-slider-wrapper {
+  height: auto !important;
+  overflow: visible !important;
+}
+
+body.et-fb #gph-hero-slider-wrapper .et_pb_fullwidth_image {
+  position: relative !important;
+  inset: auto !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  z-index: auto !important;
+}
+
+/* Arrows/dots are meaningless against a tall stacked view — hide them
+   rather than let them float, misplaced, over 6 stacked full-width images */
+body.et-fb #gph-hero-slider-wrapper .et_pb_fullwidth_code,
+body.et-fb .gph-arrow,
+body.et-fb #gph-slider-dots {
+  display: none !important;
 }
