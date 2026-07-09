@@ -1,8 +1,6 @@
 /**
  * Gas Pump Heaven - Homepage Hero Slider
  * Enqueued on the front page only.
- *
- * Stage 3: arrows + dots + autoplay.
  */
 
 (() => {

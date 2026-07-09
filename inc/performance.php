@@ -9,11 +9,68 @@
 defined('ABSPATH') || exit;
 
 /**
- * Preload homepage Divi hero slider LCP image.
+ * Locate the URL of the first slide in the homepage hero slider.
  *
- * The Divi slider uses background images, so we cannot add fetchpriority
- * directly to an <img> tag. Preloading the first visible slide image helps
- * the browser discover the LCP image earlier.
+ * Reads the raw Divi shortcode content of the front page (not rendered
+ * HTML — this runs during wp_head, before the page body exists yet).
+ * Scoped to the section carrying the gph-hero-slider-wrapper CSS ID, so
+ * it always reflects whichever image is currently first in the builder,
+ * even after the admin reorders slides.
+ *
+ * @return string Image URL, or '' if it can't be determined.
+ */
+function gph_get_homepage_hero_slider_first_image_url()
+{
+    if (! is_front_page()) {
+        return '';
+    }
+
+    $post_id = get_queried_object_id();
+
+    if (! $post_id) {
+        return '';
+    }
+
+    $post = get_post($post_id);
+
+    if (! $post || empty($post->post_content)) {
+        return '';
+    }
+
+    $content = $post->post_content;
+
+    // Isolate the hero slider's Fullwidth Section by its Divi CSS ID.
+    // Divi stores the "CSS ID" builder field as the module_id shortcode attribute.
+    $found = preg_match(
+        '/\[et_pb_fullwidth_section\b[^\]]*\bmodule_id="gph-hero-slider-wrapper"[^\]]*\](.*?)\[\/et_pb_fullwidth_section\]/s',
+        $content,
+        $section_match
+    );
+
+    if (! $found || empty($section_match[1])) {
+        return '';
+    }
+
+    // First Fullwidth Image module inside that section = first slide.
+    $found = preg_match(
+        '/\[et_pb_fullwidth_image\b[^\]]*\bsrc="([^"]+)"/',
+        $section_match[1],
+        $image_match
+    );
+
+    if (! $found || empty($image_match[1])) {
+        return '';
+    }
+
+    return esc_url_raw($image_match[1]);
+}
+
+/**
+ * Preload the homepage hero slider's first slide, matching whichever
+ * image currently sits first in the builder.
+ *
+ * Mirrors the same attachment-lookup + responsive-srcset pattern already
+ * used for the WooCommerce single product image preload below.
  */
 function gph_preload_homepage_lcp_image()
 {
@@ -21,9 +78,28 @@ function gph_preload_homepage_lcp_image()
         return;
     }
 
-    $lcp_image_url = 'https://www.gaspumpheaven.com/wp-content/uploads/2026/06/yqq0q3izn02z2yvk8pmn-1.webp';
+    $image_url = gph_get_homepage_hero_slider_first_image_url();
 
-    echo '<link rel="preload" as="image" href="' . esc_url($lcp_image_url) . '" type="image/webp" fetchpriority="high">' . "\n";
+    if (! $image_url) {
+        return;
+    }
+
+    $attachment_id = attachment_url_to_postid($image_url);
+
+    $srcset = $attachment_id ? wp_get_attachment_image_srcset($attachment_id, 'full') : false;
+    $sizes  = $attachment_id ? wp_get_attachment_image_sizes($attachment_id, 'full') : false;
+
+    echo "\n" . '<link rel="preload" as="image" href="' . esc_url($image_url) . '"';
+
+    if ($srcset) {
+        echo ' imagesrcset="' . esc_attr($srcset) . '"';
+    }
+
+    if ($sizes) {
+        echo ' imagesizes="' . esc_attr($sizes) . '"';
+    }
+
+    echo ' fetchpriority="high">' . "\n";
 }
 add_action('wp_head', 'gph_preload_homepage_lcp_image', 1);
 
