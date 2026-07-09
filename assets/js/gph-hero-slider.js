@@ -1,0 +1,1 @@
+console.log("gph-hero-slider.js loaded");

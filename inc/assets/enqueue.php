@@ -116,6 +116,22 @@ function gph_child_enqueue_assets()
         file_exists($js_abs) ? filemtime($js_abs) : GPH_CHILD_VERSION,
         true
     );
+
+  /* ---------- Homepage Hero Slider JS (Front Page Only) ---------- */
+   if ( is_front_page() ) {
+        $hero_js_rel = 'assets/js/gph-hero-slider.js';
+        $hero_js_abs = GPH_CHILD_PATH . $hero_js_rel;
+        $hero_js_url = GPH_CHILD_URI . $hero_js_rel;
+
+        wp_enqueue_script(
+            'gph-hero-slider-js',
+            $hero_js_url,
+            array(),
+            file_exists($hero_js_abs) ? filemtime($hero_js_abs) : GPH_CHILD_VERSION,
+            true // footer
+        );
+  }
+
 }
 
 /**
@@ -165,3 +181,5 @@ function gph_child_preload_fonts()
  * Disable Astra's Google Fonts (we use local fonts only).
  */
 add_filter('astra_google_fonts', '__return_empty_array');
+
+
