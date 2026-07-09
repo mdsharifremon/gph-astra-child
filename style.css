@@ -2140,20 +2140,36 @@ body.gph-howto .entry-content ul.wp-block-page-list ul {
   position: relative !important;
   overflow: hidden !important;
   width: 100%;
-  height: 580px;
+  height: 640px;
   cursor: pointer;
   background-color: #0c2318; /* placeholder — replace with your exact brand dark-green hex */
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1600px) {
   #gph-hero-slider-wrapper {
-    height: 300px;
+    height: 520px;
   }
 }
 
+@media (max-width: 1400px) {
+  #gph-hero-slider-wrapper {
+    height: 450px;
+  }
+}
+@media (max-width: 1024px) {
+  #gph-hero-slider-wrapper {
+    height: 320px; /* tune after visual check — this is a starting value, not final */
+  }
+}
 @media (max-width: 767px) {
   #gph-hero-slider-wrapper {
-    height: 200px; /* tune after visual check — this is a starting value, not final */
+    height: 210px; /* tune after visual check — this is a starting value, not final */
+  }
+}
+
+@media (max-width: 450px) {
+  #gph-hero-slider-wrapper {
+    height: 170px; /* tune after visual check — this is a starting value, not final */
   }
 }
 
@@ -2162,7 +2178,7 @@ body.gph-howto .entry-content ul.wp-block-page-list ul {
   position: absolute !important;
   inset: 0 !important;
   opacity: 0 !important;
-  transition: opacity 0.6s ease !important;
+  transition: opacity 0.8s ease !important;
   pointer-events: none !important;
   z-index: 1 !important;
 }
@@ -2170,8 +2186,8 @@ body.gph-howto .entry-content ul.wp-block-page-list ul {
 #gph-hero-slider-wrapper .et_pb_fullwidth_image img {
   width: 100% !important;
   height: 100% !important;
-
   display: block !important;
+  object-fit: cover !important;
 }
 
 #gph-hero-slider-wrapper .et_pb_fullwidth_image.is-active {
@@ -2216,22 +2232,22 @@ body.gph-howto .entry-content ul.wp-block-page-list ul {
 }
 .gph-arrow-prev { 
   left:-20px;
-  opacity: 0.1;
+  opacity: 0;
   transition:opacity 0.4s ease, left 0.4s ease;
  }
 .gph-arrow-next { 
   right: -20px; 
-  opacity: 0.1;
+  opacity: 0;
   transition:opacity 0.4s ease, right 0.4s ease;
 }
 
 #gph-hero-slider-wrapper:hover .gph-arrow-prev { 
-  left: 50px;
+  left: 25px;
   opacity: 1;
  }
 #gph-hero-slider-wrapper:hover .gph-arrow-next { 
   opacity: 1;
-  right: 50px; 
+  right: 25px; 
 }
 
 .gph-arrow::before {
@@ -2261,8 +2277,9 @@ body.gph-howto .entry-content ul.wp-block-page-list ul {
 @media (max-width: 767px) {
   .gph-arrow { width: 36px; height: 36px; }
   .gph-arrow::before { font-size: 24px; }
-  .gph-arrow-prev { left: 15px; }
-  .gph-arrow-next { right: 15px; }
+ 
+  #gph-hero-slider-wrapper:hover .gph-arrow-prev { left: 15px;} 
+  #gph-hero-slider-wrapper:hover .gph-arrow-next { right: 15px;} 
 }
 
 /* ---------- Dots ---------- */
@@ -2272,17 +2289,23 @@ body.gph-howto .entry-content ul.wp-block-page-list ul {
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 8px;
+  gap: 5px;
   pointer-events: auto;
 }
 
 .gph-dot {
   position: relative;
-  width: 44px;
-  height: 44px;
+  width: 15px;
+  height: 15px;
+  padding: 0 !important;
   background: transparent;
   border: none;
   cursor: pointer;
+  color: transparent !important;
+  background-color: transparent !important;
+  border: 0;
+   
+
 }
 
 .gph-dot::before {
@@ -2291,20 +2314,31 @@ body.gph-howto .entry-content ul.wp-block-page-list ul {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 9px;
-  height: 9px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.45);
   transition: background 0.2s ease, transform 0.2s ease;
 }
-
+.gph-dot:hover::before{
+  background-color: rgba(255, 255, 255, 0.9);
+}
 .gph-dot.is-active::before {
   background: #fff;
   transform: translate(-50%, -50%) scale(1.15);
 }
 
 @media (max-width: 767px) {
-  #gph-slider-dots { bottom: 10px; gap: 6px; }
+  #gph-slider-dots { bottom: 10px; gap: 3px; }
+  .gph-dot {
+    position: relative;
+    width: 12px;
+    height: 12px;
+  }
+  .gph-dot::before {
+    width: 9px;
+    height: 9px;
+  }
 }
 
 #gph-hero-slider-wrapper .et_pb_fullwidth_image {
