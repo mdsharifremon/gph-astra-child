@@ -1693,6 +1693,8 @@ body.gph-howto .entry-content ul.wp-block-page-list ul {
    07. Page-Specific Styles
    ========================================================================== */
 
+
+
 /* --------------------------------------------------------------------------
    07.1 404 Page
    -------------------------------------------------------------------------- */
@@ -2041,4 +2043,85 @@ body.gph-howto .entry-content ul.wp-block-page-list ul {
 .entry-content:has(#et-boc) {
   width: 100% !important;
   max-width: none !important;
+}
+
+
+
+/*========================================
+* 10. About Page 
+========================================*/
+@media (max-width: 980px) {
+ .et_pb_row.gph-about-hero{
+  display: flex;
+  flex-direction: column-reverse;
+  gap:40px;
+}
+}
+
+/* ========================================
+* 11. Contact Page
+========================================*/
+ .et-db #et-boc .et-l .gph-contact-main-row .et_pb_blurb_position_left .et_pb_blurb_content{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: start;
+    gap: 20px;
+}
+
+/*===========================================
+* 12. Single Product Page (Variable Buttons)
+==============================================*/
+/* GPH - WooCommerce variation swatch button styling */
+.woo-variation-swatches 
+.variable-items-wrapper 
+.variable-item:not(.radio-variable-item).button-variable-item {
+    border: 1px solid var(--ast-global-color-0) !important;
+    box-shadow: none !important;
+    background-color: #fff !important;
+    color: var(--ast-global-color-0) !important;
+    
+}
+
+/* Hover state */
+.woo-variation-swatches 
+.variable-items-wrapper 
+.variable-item:not(.radio-variable-item).button-variable-item:hover {
+    border-color: var(--ast-global-color-0) !important;
+    box-shadow: none !important;
+    background-color: var(--ast-global-color-0) !important;
+    color: var(--ast-global-color-4) !important;
+}
+
+/* Selected / checked state */
+.woo-variation-swatches 
+.variable-items-wrapper 
+.variable-item:not(.radio-variable-item).button-variable-item.selected,
+.woo-variation-swatches 
+.variable-items-wrapper 
+.variable-item:not(.radio-variable-item).button-variable-item[aria-checked="true"] {
+    border-color: var(--ast-global-color-0) !important;
+    box-shadow: none !important;
+    background-color: var(--ast-global-color-0) !important;
+    color: #fff !important;
+}
+
+/* Selected inner text */
+.woo-variation-swatches 
+.variable-items-wrapper 
+.variable-item:not(.radio-variable-item).button-variable-item.selected .variable-item-span,
+.woo-variation-swatches 
+.variable-items-wrapper 
+.variable-item:not(.radio-variable-item).button-variable-item[aria-checked="true"] .variable-item-span {
+    color: #fff !important;
+}
+
+/* Remove selected hover shadow */
+.woo-variation-swatches 
+.variable-items-wrapper 
+.variable-item:not(.radio-variable-item).button-variable-item.selected:hover,
+.woo-variation-swatches 
+.variable-items-wrapper 
+.variable-item:not(.radio-variable-item).button-variable-item[aria-checked="true"]:hover {
+    box-shadow: none !important;
 }
